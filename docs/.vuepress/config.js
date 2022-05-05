@@ -128,7 +128,8 @@ module.exports = {
           sidebarDepth: 2, // 可选的, 默认值是 1
           children: [
             "Storage_hardware",
-            "Windows_WSL_terminal_WebDAV_PartitionBackup"
+            "Windows_WSL_terminal_WebDAV_PartitionBackup",
+			"我的文章"
           ],
         },
       ],
