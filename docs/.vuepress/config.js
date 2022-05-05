@@ -101,7 +101,7 @@ module.exports = {
       },
     ],
     sidebar: {
-      "/.vuepress/views/frontEnd/": [
+      "/views/frontEnd/": [
         {
           title: "前端", // 必要的
           sidebarDepth: 2, // 可选的, 默认值是 1
@@ -112,7 +112,7 @@ module.exports = {
           ],
         },
       ],
-      "/.vuepress/views/MCU/": [
+      "/views/MCU/": [
         {
           title: "MCU", // 必要的
           sidebarDepth: 2, // 可选的, 默认值是 1
@@ -121,7 +121,7 @@ module.exports = {
           ],
         },
       ],
-      "/.vuepress/views/Computer/": [
+      "/views/Computer/": [
         {
           title: "计算机", // 必要的
           sidebarDepth: 2, // 可选的, 默认值是 1
@@ -132,7 +132,7 @@ module.exports = {
           ],
         },
       ],
-      "/.vuepress/views/Tool/": [
+      "/views/Tool/": [
         {
           title: "工具", // 必要的
           sidebarDepth: 2, // 可选的, 默认值是 1
