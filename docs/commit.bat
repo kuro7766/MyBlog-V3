@@ -2,5 +2,5 @@
 git add . 
 git commit -m "Via script" 
 call proxy.bat git push -u origin master
-pause
+::https://www.cnblogs.com/yayin/p/13691239.html
 pause
