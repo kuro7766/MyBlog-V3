@@ -108,7 +108,7 @@ module.exports = {
           children: [
             "vuepress_theme_reco-Github_Actions",
             "VuePress_GithubPages_TravisCI",
-            "Sphinx_GitHub_ReadtheDocs",
+            // "模板",
           ],
         },
       ],
