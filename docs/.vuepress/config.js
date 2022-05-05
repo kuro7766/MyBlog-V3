@@ -101,7 +101,7 @@ module.exports = {
       },
     ],
     sidebar: {
-      "/views/frontEnd/": [
+      ".vuepress/views/frontEnd/": [
         {
           title: "前端", // 必要的
           sidebarDepth: 2, // 可选的, 默认值是 1
@@ -112,7 +112,7 @@ module.exports = {
           ],
         },
       ],
-      "/views/MCU/": [
+      ".vuepress/views/MCU/": [
         {
           title: "MCU", // 必要的
           sidebarDepth: 2, // 可选的, 默认值是 1
@@ -121,7 +121,7 @@ module.exports = {
           ],
         },
       ],
-      "/views/Computer/": [
+      ".vuepress/views/Computer/": [
         {
           title: "计算机", // 必要的
           sidebarDepth: 2, // 可选的, 默认值是 1
@@ -132,7 +132,7 @@ module.exports = {
           ],
         },
       ],
-      "/views/Tool/": [
+      ".vuepress/views/Tool/": [
         {
           title: "工具", // 必要的
           sidebarDepth: 2, // 可选的, 默认值是 1
@@ -190,7 +190,7 @@ module.exports = {
       "@vuepress-reco/vuepress-plugin-rss", //RSS插件
       {
         site_url: "https://tsanfer.com", //网站地址
-        copyright: "Tsanfer", //版权署名
+        copyright: "Kuro", //版权署名
       },
     ],
     ["flowchart"], // 支持流程图
