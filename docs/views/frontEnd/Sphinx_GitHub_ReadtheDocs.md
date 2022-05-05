@@ -13,6 +13,12 @@ tags:
 在本地配置好 Linux 环境（我用的 WSL），然后配置好 Sphinx 生成文档的样式，最后推送到 Github，并触发 Readthedocs 自动构建、生成在线文档
 :::
 
+AAAAAAAA
+
+```java
+int a=10;
+```
+
 <!-- more -->
 
 🎵🎵🎵🎵🎼🎼🎼🎼🎧🎼🎼🎼🎼🎵🎵🎵🎵
