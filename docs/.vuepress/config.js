@@ -6,7 +6,7 @@ module.exports = {
   
 //   baseURL: "/unsafe/v/",
   base: "/MyBlog-V3/",
-  title: "Tsanfer's Blog", // 显示在左上角的网页名称以及首页在浏览器标签显示的title名称
+  title: "Kuro's Blog", // 显示在左上角的网页名称以及首页在浏览器标签显示的title名称
   description: "现居住于猎户臂上的一个碳基生命", // meta 中的描述文字，用于SEO
   head: [
     ["link", { rel: "icon", href: "/favicon.svg" }], //浏览器的标签栏的网页图标,基地址/docs/.vuepress/public
@@ -72,31 +72,31 @@ module.exports = {
             link: "https://github.com/Tsanfer",
             icon: "reco-github",
           },
-          {
-            text: "CSDN",
-            link: "https://blog.csdn.net/qq_27961843/",
-            icon: "reco-csdn",
-          },
-          {
-            text: "BiliBili",
-            link: "https://space.bilibili.com/12167681",
-            icon: "reco-bilibili",
-          },
-          {
-            text: "QQ",
-            link: "tencent://message/?uin=1124851454",
-            icon: "reco-qq",
-          },
-          {
-            text: "Twitter",
-            link: "https://twitter.com/a1124851454",
-            icon: "reco-twitter",
-          },
-          {
-            text: "Gmail",
-            link: "mailto:a1124851454@gmail.com",
-            icon: "reco-mail",
-          },
+          // {
+          //   text: "CSDN",
+          //   link: "https://blog.csdn.net/qq_27961843/",
+          //   icon: "reco-csdn",
+          // },
+          // {
+          //   text: "BiliBili",
+          //   link: "https://space.bilibili.com/12167681",
+          //   icon: "reco-bilibili",
+          // },
+          // {
+          //   text: "QQ",
+          //   link: "tencent://message/?uin=1124851454",
+          //   icon: "reco-qq",
+          // },
+          // {
+          //   text: "Twitter",
+          //   link: "https://twitter.com/a1124851454",
+          //   icon: "reco-twitter",
+          // },
+          // {
+          //   text: "Gmail",
+          //   link: "mailto:a1124851454@gmail.com",
+          //   icon: "reco-mail",
+          // },
         ],
       },
     ],
@@ -139,7 +139,8 @@ module.exports = {
           children: [
             "ffmpeg",
             "scrcpy",
-            "Frp_Docker_SSH_RDP"
+            "Frp_Docker_SSH_RDP",
+            "测试"
           ],
         },
       ],
@@ -150,8 +151,8 @@ module.exports = {
     record: "蜀ICP备20005033号-2",
     recordLink: "https://beian.miit.gov.cn/",
     cyberSecurityRecord: "川公网安备 51110202000301号",
-    cyberSecurityLink:
-      "http://www.beian.gov.cn/",
+    // cyberSecurityLink:
+    //   "http://www.beian.gov.cn/",
     startYear: "2020", // 项目开始时间，只填写年份
     lastUpdated: "最后更新时间", // string | boolean
     author: "Tsanfer",
