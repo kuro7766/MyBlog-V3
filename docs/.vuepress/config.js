@@ -117,8 +117,7 @@ module.exports = {
           title: "MCU", // 必要的
           sidebarDepth: 2, // 可选的, 默认值是 1
           children: [
-            "Linux_board_NFS",
-            "First_Prepare_for_Lanqiao_Cup_MCU_Competition",
+            "Linux_board_NFS"
           ],
         },
       ],
