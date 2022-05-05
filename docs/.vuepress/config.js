@@ -144,6 +144,16 @@ module.exports = {
           ],
         },
       ],
+      "/views/": [
+        {
+          title: "所有文章", // 必要的
+          sidebarDepth: 1, // 可选的, 默认值是 1
+          children: [
+            "csdn脚本",
+            "csdn脚本2",
+          ],
+        },
+      ],
     },
     // displayAllHeaders: true, // 默认值：false
     subSidebar: "auto",
