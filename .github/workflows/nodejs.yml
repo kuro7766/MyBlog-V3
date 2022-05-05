@@ -1,0 +1,77 @@
+# .github/workflows/nodejs.yml
+
+
+on: push # 触发此文件运行的条件
+name: CI/CD # 此工作流程（workflow）的名字
+jobs:
+  FTP-Deploy-Action:
+    name: CI&CD # 此任务（job）的名字
+    runs-on: ubuntu-latest # 运行环境
+    steps:
+      - uses: actions/checkout@v2 # 切换分支到master
+#         with:
+#           fetch-depth: 2
+      - run: git checkout master 
+#       - run: git pull --prune
+#       - run: git remote prune origin
+#       - run: git rebase
+#       --prune
+
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v3 # 使用node环境
+        with:
+          node-version: "14.x" # 版本14
+
+#       - name: Cache node modules
+#         id: cache # 缓存id
+#         uses: actions/cache@v3
+#         env:
+#           cache-name: cache-node-modules # 缓存名字
+#         with:
+#           path: node_modules # 缓存路径
+#           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('package.json') }} # 缓存标识
+
+
+      - name: Install Dependencies
+        if: steps.cache.outputs.cache-hit != 'true' # 如果没有缓存的话
+        run: npm install # 安装依赖
+
+      - name: Build project
+        run: npm run docs:build # 构建项目和生成代码覆盖率报告
+        env:
+          LEANCLOUD_APP_ID: ${{ secrets.LEANCLOUD_APP_ID }} # 评 论系统的ID
+          LEANCLOUD_APP_KEY: ${{ secrets.LEANCLOUD_APP_KEY }} # 评论系统的KEY
+
+      # 如果FTP-Deploy-Action出现，Dirty repository: Having uncommitted changes. 问题时，使用以下注释步骤解决问题
+#       - name: reset git
+#         run: git reset --hard
+
+
+      - name: upload-artifact
+        uses: actions/upload-artifact@v3 #共享或保存action过程中产生的文件
+        with:
+          name: static_web_file
+          path: ./docs/.vuepress/dist/ # or path/to/artifact
+          
+          
+      - name: config for github bot
+        run: |
+          sudo git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          sudo git config --local user.name "myself"
+          sudo git config --system core.longpaths true
+
+      - run: mkdir -p web
+      - run: cp -r ./docs/.vuepress/dist/* ./web/
+#       - run: git add -f ./docs/.vuepress/dist/
+      - run: git add -f ./web
+      - run: git commit -m "auto changes"
+#       - run: git fetch
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+         github_token: ${{ secrets._GITHUB_TOKEN }}
+         branch: deployment
+         force: true
+         
+
