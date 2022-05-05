@@ -10,6 +10,9 @@ tags:
 
 ::: tip
 ![FFmpeg_Logo_new](https://cdn.tsanfer.com/image/FFmpeg_Logo_new.svg)
+
+这里是默认带左边框的吗
+
 :::
 
 <!-- more -->
