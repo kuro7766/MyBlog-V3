@@ -2,7 +2,7 @@
 title: 音视频编解码工具 FFmpeg 的使用
 date: 2021-01-21
 categories:
-  - 工具
+  - MCU
 tags:
   - 多媒体
   - 转码
