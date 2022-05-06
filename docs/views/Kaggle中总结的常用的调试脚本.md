@@ -26,12 +26,27 @@ class classproperty(property):
     def __get__(self, cls, owner):
         return classmethod(self.fget).__get__(None, owner)()
     
+    
 def monkeypatch_method_to_class(cls): #为torch tensor等挂载一些函数
     def decorator(func):
         setattr(cls, func.__name__, func)
         return func
     return decorator
 
+# 时间测试工具
+from contextlib import contextmanager
+from time import time, sleep
+
+@contextmanager
+def timed(label="NoLabel"):
+    start = time()  # Setup - __enter__
+    print(f"[{label}] time benchmark started")
+    try:
+        yield  # yield to body of `with` statement
+    finally:  # Teardown - __exit__
+        end = time()
+        print(f"[{label}] used {end - start} s")
+        
 class g:
 #     d=False
     d=True
