@@ -24,7 +24,7 @@ module.exports = {
         sidebarDepth: 2, // 可选的, 默认值是 1
         children: [
           "ffmpeg",
-          
+          "Linux_board_NFS"
           // "csdn脚本",
           // "csdn脚本2",
           // "Kaggle中总结的常用的调试脚本"
