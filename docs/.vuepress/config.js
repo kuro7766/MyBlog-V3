@@ -171,10 +171,10 @@ module.exports = {
     codeTheme: "okaidia", // default 'tomorrow'
     smooth: "true", //平滑滚动
     // 评论设置
-    valineConfig: {
-      appId: process.env.LEANCLOUD_APP_ID,
-      appKey: process.env.LEANCLOUD_APP_KEY,
-    },
+    // valineConfig: {
+    //   appId: process.env.LEANCLOUD_APP_ID,
+    //   appKey: process.env.LEANCLOUD_APP_KEY,
+    // },
   },
   markdown: {
     lineNumbers: true, //代码显示行号
