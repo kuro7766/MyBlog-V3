@@ -4,17 +4,17 @@ module.exports = {
 //   host: "0.0.0.0", // 生成网页地址（本地调试使用）
 //   port: "22333", // 生成网页端口（本地调试使用）
   sidebar: {
-    "/views/": [
-      {
-        title: "所有文章", // 必要的
-        sidebarDepth: 1, // 可选的, 默认值是 1
-        children: [
-          // "csdn脚本",
-          // "csdn脚本2",
-          "Kaggle中总结的常用的调试脚本"
-        ],
-      },
-    ],
+    // "/views/": [
+    //   {
+    //     title: "所有文章", // 必要的
+    //     sidebarDepth: 1, // 可选的, 默认值是 1
+    //     children: [
+    //       // "csdn脚本",
+    //       // "csdn脚本2",
+    //       // "Kaggle中总结的常用的调试脚本"
+    //     ],
+    //   },
+    // ],
     // "/views/frontEnd/": [
     //   {
     //     title: "前端", // 必要的

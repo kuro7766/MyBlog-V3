@@ -63,3 +63,80 @@ def iv(func,*args,**kwargs):
     return func(*args,**kwargs)
 ```
 
+
+
+# Numpy拼接
+
+```python
+import numpy as np
+
+
+class GrowableNumpyArray:
+
+    def __init__(self, dtype=np.float, grow_speed=4):
+        self.data = np.zeros((100,), dtype=dtype)
+        self.capacity = 100
+        self.size = 0
+        self.grow_speed = grow_speed
+
+    def update(self, row):
+        for r in row:
+            self.add(r)
+
+    def add(self, x):
+        if self.size == self.capacity:
+            self.capacity *= self.grow_speed
+            newdata = np.zeros((self.capacity,))
+            newdata[:self.size] = self.data
+            self.data = newdata
+
+        self.data[self.size] = x
+        self.size += 1
+
+    def finalize(self):
+        data = self.data[:self.size]
+        return data
+
+```
+
+# 可以计数的上下文
+
+
+```python
+import sys
+import inspect
+
+class CounterExec(object):
+    counter = 0
+    
+    def __init__(self,enabled=False,every=50):
+        """
+        if mode = 0, proceed as normal
+        if mode = 1, may do not execute block
+        """
+        self.mode=enabled
+        self.every = every
+    def __enter__(self):
+        self.__class__.counter += 1
+        
+        exec_flag = False
+        if self.mode == 1:
+            if self.__class__.counter%self.every==0:
+                exec_flag = True
+        elif self.mode ==0:
+            exec_flag=True
+            
+        if exec_flag:
+            pass
+        else:
+            print('Skipping Context ... ')
+            sys.settrace(lambda *args, **keys: None)
+            frame = sys._getframe(1)
+            frame.f_trace = self.trace
+            return 'SET BY TRICKY CONTEXT MANAGER!!'
+    def trace(self, frame, event, arg):
+        raise
+    def __exit__(self, type, value, traceback):
+        print('Exiting context ...')
+        return True
+```
