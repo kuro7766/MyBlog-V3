@@ -9,55 +9,55 @@ module.exports = {
         title: "所有文章", // 必要的
         sidebarDepth: 1, // 可选的, 默认值是 1
         children: [
-          "csdn脚本",
-          "csdn脚本2",
+          // "csdn脚本",
+          // "csdn脚本2",
           "Kaggle中总结的常用的调试脚本"
         ],
       },
     ],
-    "/views/frontEnd/": [
-      {
-        title: "前端", // 必要的
-        sidebarDepth: 2, // 可选的, 默认值是 1
-        children: [
-          "vuepress_theme_reco-Github_Actions",
-          "VuePress_GithubPages_TravisCI",
-          // "模板",
-        ],
-      },
-    ],
-    "/views/MCU/": [
-      {
-        title: "MCU", // 必要的
-        sidebarDepth: 2, // 可选的, 默认值是 1
-        children: [
-          "Linux_board_NFS"
-        ],
-      },
-    ],
-    "/views/Computer/": [
-      {
-        title: "计算机", // 必要的
-        sidebarDepth: 2, // 可选的, 默认值是 1
-        children: [
-          "Storage_hardware",
-          "Windows_WSL_terminal_WebDAV_PartitionBackup",
-    "我的文章"
-        ],
-      },
-    ],
-    "/views/Tool/": [
-      {
-        title: "工具", // 必要的
-        sidebarDepth: 2, // 可选的, 默认值是 1
-        children: [
-          "ffmpeg",
-          "scrcpy",
-          "Frp_Docker_SSH_RDP",
-          "测试"
-        ],
-      },
-    ],
+    // "/views/frontEnd/": [
+    //   {
+    //     title: "前端", // 必要的
+    //     sidebarDepth: 2, // 可选的, 默认值是 1
+    //     children: [
+    //       "vuepress_theme_reco-Github_Actions",
+    //       "VuePress_GithubPages_TravisCI",
+    //       // "模板",
+    //     ],
+    //   },
+    // ],
+    // "/views/MCU/": [
+    //   {
+    //     title: "MCU", // 必要的
+    //     sidebarDepth: 2, // 可选的, 默认值是 1
+    //     children: [
+    //       "Linux_board_NFS"
+    //     ],
+    //   },
+    // ],
+    // "/views/Computer/": [
+    //   {
+    //     title: "计算机", // 必要的
+    //     sidebarDepth: 2, // 可选的, 默认值是 1
+    //     children: [
+    //       "Storage_hardware",
+    //       "Windows_WSL_terminal_WebDAV_PartitionBackup",
+    // "我的文章"
+    //     ],
+    //   },
+    // ],
+    // "/views/Tool/": [
+    //   {
+    //     title: "工具", // 必要的
+    //     sidebarDepth: 2, // 可选的, 默认值是 1
+    //     children: [
+    //       "ffmpeg",
+    //       "scrcpy",
+    //       "Frp_Docker_SSH_RDP",
+    //       "测试"
+    //     ],
+    //   },
+    // ],
   },
 //   baseURL: "/unsafe/v/",
   base: "/MyBlog-V3/",
