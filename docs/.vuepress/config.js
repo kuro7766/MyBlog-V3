@@ -4,17 +4,34 @@ module.exports = {
 //   host: "0.0.0.0", // 生成网页地址（本地调试使用）
 //   port: "22333", // 生成网页端口（本地调试使用）
   sidebar: {
-    // "/views/": [
-    //   {
-    //     title: "所有文章", // 必要的
-    //     sidebarDepth: 1, // 可选的, 默认值是 1
-    //     children: [
-    //       // "csdn脚本",
-    //       // "csdn脚本2",
-    //       // "Kaggle中总结的常用的调试脚本"
-    //     ],
-    //   },
-    // ],
+    "/views/default/": [
+      {
+        title: "所有文章", // 必要的
+        sidebarDepth: 2, // 可选的, 默认值是 1
+        children: [
+          "Kaggle中总结的常用的调试脚本",
+          "第二篇文章"
+          // "csdn脚本",
+          // "csdn脚本2",
+          // "Kaggle中总结的常用的调试脚本"
+        ],
+      },
+      
+    ],
+    "/views/others/": [
+      {
+        title: "其他", // 必要的
+        sidebarDepth: 2, // 可选的, 默认值是 1
+        children: [
+          "ffmpeg",
+          
+          // "csdn脚本",
+          // "csdn脚本2",
+          // "Kaggle中总结的常用的调试脚本"
+        ],
+      },
+      
+    ],
     // "/views/frontEnd/": [
     //   {
     //     title: "前端", // 必要的
@@ -88,10 +105,10 @@ module.exports = {
       },
       socialLinks: [
         { icon: "reco-github", link: "https://github.com/Tsanfer" },
-        { icon: "reco-bilibili", link: "https://space.bilibili.com/12167681" },
-        { icon: "reco-qq", link: "tencent://message/?uin=1124851454" },
-        { icon: "reco-twitter", link: "https://twitter.com/a1124851454" },
-        { icon: "reco-mail", link: "mailto:a1124851454@gmail.com" },
+        // { icon: "reco-bilibili", link: "https://space.bilibili.com/12167681" },
+        { icon: "reco-qq", link: "tencent://message/?uin=2280315050" },
+        // { icon: "reco-twitter", link: "https://twitter.com/a1124851454" },
+        // { icon: "reco-mail", link: "mailto:a1124851454@gmail.com" },
       ],
     },
     nav: [
@@ -102,20 +119,20 @@ module.exports = {
         icon: "reco-api",
         items: [
           {
-            text: "个人网盘",
+            text: "网盘",
             link: "http://clouddisk.tsanfer.com:8080",
             icon: "fa-hdd",
           },
-          {
-            text: "订阅转换器",
-            link: "http://clouddisk.tsanfer.com:58080",
-            icon: "fa-exchange-alt",
-          },
-          {
-            text: "目标检测",
-            link: "http://hpc.tsanfer.com:8000",
-            icon: "fa-object-ungroup",
-          },
+          // {
+          //   text: "订阅转换器",
+          //   link: "http://clouddisk.tsanfer.com:58080",
+          //   icon: "fa-exchange-alt",
+          // },
+          // {
+          //   text: "目标检测",
+          //   link: "http://hpc.tsanfer.com:8000",
+          //   icon: "fa-object-ungroup",
+          // },
         ],
       },
       {
@@ -124,7 +141,7 @@ module.exports = {
         items: [
           {
             text: "GitHub",
-            link: "https://github.com/Tsanfer",
+            link: "https://github.com/kuro7766",
             icon: "reco-github",
           },
           // {
