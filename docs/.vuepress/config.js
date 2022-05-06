@@ -6,7 +6,7 @@ module.exports = {
   sidebar: {
     "/views/default/": [
       {
-        title: "所有文章", // 必要的
+        title: "合集", // 必要的
         sidebarDepth: 2, // 可选的, 默认值是 1
         children: [
           "Kaggle中总结的常用的调试脚本",
