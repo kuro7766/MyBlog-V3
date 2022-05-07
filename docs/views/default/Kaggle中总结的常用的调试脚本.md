@@ -9,6 +9,8 @@ tags:
 - kaggle
 ---
 
+![](http://kuroweb.tk/picture/16519227147870658.jpg)
+
 <!-- more -->
 
 ## 动态执行语句
