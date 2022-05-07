@@ -17,7 +17,14 @@ module.exports = {
           content: "width=device-width,initial-scale=1,user-scalable=no",
         },
       ], //在移动端，搜索框在获得焦点时会放大
+      ['link', { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css' }]
     ],
+
+
+  extendMarkdown: md => {
+      md.set({ breaks: true })
+      md.use(require('markdown-it-katex'))
+  },
     theme: "reco", //选择主题‘reco’
     themeConfig: {
       type: "blog", //选择类型博客
