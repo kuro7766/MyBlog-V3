@@ -102,15 +102,15 @@ module.exports = {
       ],
       // displayAllHeaders: true, // 默认值：false
       subSidebar: "auto",
-  
+  // ------------------------------------------------------------------添加文章----------------------------------------------------------------------
       sidebar: {
         "/views/default/": [
           {
-            title: "合集", // 必要的
+            title: "Kaggle比赛", // 必要的
             sidebarDepth: 2, // 可选的, 默认值是 1
             children: [
               "Kaggle中总结的常用的调试脚本",
-              "第二篇文章"
+              // "第二篇文章"
               // "csdn脚本",
               // "csdn脚本2",
               // "Kaggle中总结的常用的调试脚本"
@@ -118,20 +118,20 @@ module.exports = {
           },
           
         ],
-        "/views/others/": [
-          {
-            title: "其他", // 必要的
-            sidebarDepth: 2, // 可选的, 默认值是 1
-            children: [
-              "ffmpeg",
-              "Linux_board_NFS"
-              // "csdn脚本",
-              // "csdn脚本2",
-              // "Kaggle中总结的常用的调试脚本"
-            ],
-          },
+        // "/views/others/": [
+        //   {
+        //     title: "其他", // 必要的
+        //     sidebarDepth: 2, // 可选的, 默认值是 1
+        //     children: [
+        //       "ffmpeg",
+        //       "Linux_board_NFS"
+        //       // "csdn脚本",
+        //       // "csdn脚本2",
+        //       // "Kaggle中总结的常用的调试脚本"
+        //     ],
+        //   },
           
-        ],
+        // ],
         // "/views/frontEnd/": [
         //   {
         //     title: "前端", // 必要的
