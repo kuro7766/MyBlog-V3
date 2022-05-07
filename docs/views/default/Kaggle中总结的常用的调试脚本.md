@@ -11,7 +11,7 @@ tags:
 
 <!-- more -->
 
-# 动态执行语句
+## 动态执行语句
 
 注意这个语句不可以写在其他文件中
 
@@ -19,7 +19,7 @@ tags:
 exec(compile(open("动态执行的语句", "rb").read(), "tmp.py", 'exec'))
 ```
 
-# 常用函数
+## 常用函数
 
 ```python
 class classproperty(property):
@@ -65,7 +65,7 @@ def iv(func,*args,**kwargs):
 
 
 
-# Numpy拼接
+## Numpy拼接
 
 ```python
 import numpy as np
@@ -99,7 +99,7 @@ class GrowableNumpyArray:
 
 ```
 
-# 可以计数的上下文
+## 可以计数的上下文
 
 
 ```python
