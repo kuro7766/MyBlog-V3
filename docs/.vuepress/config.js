@@ -103,39 +103,7 @@ module.exports = {
       },
     ],
 
-    subSidebar: "auto",
-
-    
-    sidebar: {
-      "/views/default/": [
-        {
-          title: "合集", // 必要的
-          sidebarDepth: 2, // 可选的, 默认值是 1
-          children: [
-            "Kaggle中总结的常用的调试脚本",
-            "第二篇文章"
-            // "csdn脚本",
-            // "csdn脚本2",
-            // "Kaggle中总结的常用的调试脚本"
-          ],
-        },
-        
-      ],
-      "/views/others/": [
-        {
-          title: "其他", // 必要的
-          sidebarDepth: 2, // 可选的, 默认值是 1
-          children: [
-            "ffmpeg",
-            "Linux_board_NFS"
-            // "csdn脚本",
-            // "csdn脚本2",
-            // "Kaggle中总结的常用的调试脚本"
-          ],
-        },
-        
-      ],
-    },
+ 
     
     // record: "蜀ICP备20005033号-2",
     // recordLink: "https://beian.miit.gov.cn/",
@@ -155,6 +123,41 @@ module.exports = {
     //   appKey: process.env.LEANCLOUD_APP_KEY,
     // },
   },
+
+  subSidebar: "auto",
+
+    
+  sidebar: {
+    "/views/default/": [
+      {
+        title: "合集", // 必要的
+        sidebarDepth: 2, // 可选的, 默认值是 1
+        children: [
+          "Kaggle中总结的常用的调试脚本",
+          "第二篇文章"
+          // "csdn脚本",
+          // "csdn脚本2",
+          // "Kaggle中总结的常用的调试脚本"
+        ],
+      },
+      
+    ],
+    "/views/others/": [
+      {
+        title: "其他", // 必要的
+        sidebarDepth: 2, // 可选的, 默认值是 1
+        children: [
+          "ffmpeg",
+          "Linux_board_NFS"
+          // "csdn脚本",
+          // "csdn脚本2",
+          // "Kaggle中总结的常用的调试脚本"
+        ],
+      },
+      
+    ],
+  },
+  
   markdown: {
     lineNumbers: true, //代码显示行号
   }, // 搜索设置
