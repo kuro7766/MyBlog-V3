@@ -23,6 +23,7 @@ module.exports = {
   themeConfig: {
     subSidebar: "auto",
 
+    
     sidebar: {
       "/views/default/": [
         {
