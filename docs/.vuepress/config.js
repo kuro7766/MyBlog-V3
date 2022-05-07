@@ -3,79 +3,7 @@
 module.exports = {
 //   host: "0.0.0.0", // 生成网页地址（本地调试使用）
 //   port: "22333", // 生成网页端口（本地调试使用）
-  sidebar: {
-    "/views/default/": [
-      {
-        title: "合集", // 必要的
-        sidebarDepth: 2, // 可选的, 默认值是 1
-        children: [
-          "Kaggle中总结的常用的调试脚本",
-          "第二篇文章"
-          // "csdn脚本",
-          // "csdn脚本2",
-          // "Kaggle中总结的常用的调试脚本"
-        ],
-      },
-      
-    ],
-    "/views/others/": [
-      {
-        title: "其他", // 必要的
-        sidebarDepth: 2, // 可选的, 默认值是 1
-        children: [
-          "ffmpeg",
-          "Linux_board_NFS"
-          // "csdn脚本",
-          // "csdn脚本2",
-          // "Kaggle中总结的常用的调试脚本"
-        ],
-      },
-      
-    ],
-    // "/views/frontEnd/": [
-    //   {
-    //     title: "前端", // 必要的
-    //     sidebarDepth: 2, // 可选的, 默认值是 1
-    //     children: [
-    //       "vuepress_theme_reco-Github_Actions",
-    //       "VuePress_GithubPages_TravisCI",
-    //       // "模板",
-    //     ],
-    //   },
-    // ],
-    // "/views/MCU/": [
-    //   {
-    //     title: "MCU", // 必要的
-    //     sidebarDepth: 2, // 可选的, 默认值是 1
-    //     children: [
-    //       "Linux_board_NFS"
-    //     ],
-    //   },
-    // ],
-    // "/views/Computer/": [
-    //   {
-    //     title: "计算机", // 必要的
-    //     sidebarDepth: 2, // 可选的, 默认值是 1
-    //     children: [
-    //       "Storage_hardware",
-    //       "Windows_WSL_terminal_WebDAV_PartitionBackup",
-    // "我的文章"
-    //     ],
-    //   },
-    // ],
-    // "/views/Tool/": [
-    //   {
-    //     title: "工具", // 必要的
-    //     sidebarDepth: 2, // 可选的, 默认值是 1
-    //     children: [
-    //       "ffmpeg",
-    //       "scrcpy",
-    //       "Frp_Docker_SSH_RDP",
-    //       "测试"
-    //     ],
-    //   },
-    // ],
-  },
+
 //   baseURL: "/unsafe/v/",
   base: "/MyBlog-V3/",
   title: "Kuro's Blog", // 显示在左上角的网页名称以及首页在浏览器标签显示的title名称
@@ -175,6 +103,80 @@ module.exports = {
     // displayAllHeaders: true, // 默认值：false
     subSidebar: "auto",
 
+    sidebar: {
+      "/views/default/": [
+        {
+          title: "合集", // 必要的
+          sidebarDepth: 2, // 可选的, 默认值是 1
+          children: [
+            "Kaggle中总结的常用的调试脚本",
+            "第二篇文章"
+            // "csdn脚本",
+            // "csdn脚本2",
+            // "Kaggle中总结的常用的调试脚本"
+          ],
+        },
+        
+      ],
+      "/views/others/": [
+        {
+          title: "其他", // 必要的
+          sidebarDepth: 2, // 可选的, 默认值是 1
+          children: [
+            "ffmpeg",
+            "Linux_board_NFS"
+            // "csdn脚本",
+            // "csdn脚本2",
+            // "Kaggle中总结的常用的调试脚本"
+          ],
+        },
+        
+      ],
+      // "/views/frontEnd/": [
+      //   {
+      //     title: "前端", // 必要的
+      //     sidebarDepth: 2, // 可选的, 默认值是 1
+      //     children: [
+      //       "vuepress_theme_reco-Github_Actions",
+      //       "VuePress_GithubPages_TravisCI",
+      //       // "模板",
+      //     ],
+      //   },
+      // ],
+      // "/views/MCU/": [
+      //   {
+      //     title: "MCU", // 必要的
+      //     sidebarDepth: 2, // 可选的, 默认值是 1
+      //     children: [
+      //       "Linux_board_NFS"
+      //     ],
+      //   },
+      // ],
+      // "/views/Computer/": [
+      //   {
+      //     title: "计算机", // 必要的
+      //     sidebarDepth: 2, // 可选的, 默认值是 1
+      //     children: [
+      //       "Storage_hardware",
+      //       "Windows_WSL_terminal_WebDAV_PartitionBackup",
+      // "我的文章"
+      //     ],
+      //   },
+      // ],
+      // "/views/Tool/": [
+      //   {
+      //     title: "工具", // 必要的
+      //     sidebarDepth: 2, // 可选的, 默认值是 1
+      //     children: [
+      //       "ffmpeg",
+      //       "scrcpy",
+      //       "Frp_Docker_SSH_RDP",
+      //       "测试"
+      //     ],
+      //   },
+      // ],
+    },
+    
     record: "蜀ICP备20005033号-2",
     recordLink: "https://beian.miit.gov.cn/",
     cyberSecurityRecord: "川公网安备 51110202000301号",
