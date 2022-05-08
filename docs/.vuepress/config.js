@@ -139,6 +139,20 @@ module.exports = {
           },
           
         ],
+        "/views/leetcode/": [
+          {
+            title: "Leetcode", // 必要的
+            sidebarDepth: 2, // 可选的, 默认值是 1
+            children: [
+              "leet442",
+              
+              // "csdn脚本",
+              // "csdn脚本2",
+              // "Kaggle中总结的常用的调试脚本"
+            ],
+          },
+          
+        ],
         // "/views/frontEnd/": [
         //   {
         //     title: "前端", // 必要的
@@ -184,14 +198,14 @@ module.exports = {
         // ],
       },
       
-      record: "蜀ICP备20005033号-2",
-      recordLink: "https://beian.miit.gov.cn/",
-      cyberSecurityRecord: "川公网安备 51110202000301号",
+      // record: "蜀ICP备20005033号-2",
+      // recordLink: "https://beian.miit.gov.cn/",
+      // cyberSecurityRecord: "川公网安备 51110202000301号",
       // cyberSecurityLink:
       //   "http://www.beian.gov.cn/",
       startYear: "2020", // 项目开始时间，只填写年份
       lastUpdated: "最后更新时间", // string | boolean
-      author: "Tsanfer",
+      author: "kuro",
       authorAvatar: "/avatar.svg", //作者头像
       mode: "light", //默认显示白天模式
       codeTheme: "okaidia", // default 'tomorrow'
