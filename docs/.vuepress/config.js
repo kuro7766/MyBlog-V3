@@ -229,7 +229,7 @@ module.exports = {
           meting: {
             server: "netease",
             type: "playlist",
-            mid: "2880512563",
+            mid: "2878323278",
           },
           aplayer: {
             lrcType: 3,
