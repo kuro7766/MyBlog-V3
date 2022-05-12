@@ -13,6 +13,10 @@ tags:
 
 <!-- more -->
 
+## imports 
+
+
+
 ## 动态执行语句
 
 注意这个语句不可以写在其他文件中
@@ -24,6 +28,10 @@ exec(compile(open("动态执行的语句", "rb").read(), "tmp.py", 'exec'))
 ## 常用函数
 
 ```python
+def dbg(*args, **kwargs):
+#     return
+    print(*args, **kwargs)
+
 class classproperty(property):
     def __get__(self, cls, owner):
         return classmethod(self.fget).__get__(None, owner)()
