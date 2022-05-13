@@ -28,10 +28,25 @@ exec(compile(open("动态执行的语句", "rb").read(), "tmp.py", 'exec'))
 ## 常用函数
 
 ```python
+import inspect, re
+
+from contextlib import contextmanager
+import time
 def dbg(*args, **kwargs):
 #     return
     print(*args, **kwargs)
 
+def adb(p):
+    funcname= 'adb'
+    argument_real_name = None
+    for line in inspect.getframeinfo(inspect.currentframe().f_back)[3]:
+        m = re.search(r'\b%s\s*\(\s*([A-Za-z_][A-Za-z0-9_]*)\s*\)' %funcname, line)
+    if m:
+        argument_real_name = m.group(1)
+    
+    print('◜AUTO-DEBUG [',argument_real_name,f']◝\n{p}',)
+    print('◟AUTO-DEBUG [',argument_real_name,f']◞','\n')
+    
 class classproperty(property):
     def __get__(self, cls, owner):
         return classmethod(self.fget).__get__(None, owner)()
@@ -43,10 +58,8 @@ def monkeypatch_method_to_class(cls): #为torch tensor等挂载一些函数
         return func
     return decorator
 
-# 时间测试工具
-from contextlib import contextmanager
-import time
 
+# 时间测试工具
 @contextmanager
 def timed(label="NoLabel"):
     start = time.time()  # Setup - __enter__
@@ -60,8 +73,7 @@ def timed(label="NoLabel"):
 class g:
 #     d=False
     d=True
-    lslice=1000000
-    sample_image=200
+    
     @classmethod
     def tqdm(cls,iterable):
         if g.d:
