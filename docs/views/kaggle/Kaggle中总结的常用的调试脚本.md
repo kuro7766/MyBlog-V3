@@ -32,20 +32,40 @@ import inspect, re
 
 from contextlib import contextmanager
 import time
+
+class g:
+#     d=False
+    d=True
+    
+    @classmethod
+    def tqdm(cls,iterable):
+        if g.d:
+            return iterable[0:g.lslice:1000]
+        return iterable
+    
 def dbg(*args, **kwargs):
 #     return
     print(*args, **kwargs)
 
-def adb(p):
-    funcname= 'adb'
-    argument_real_name = None
-    for line in inspect.getframeinfo(inspect.currentframe().f_back)[3]:
-        m = re.search(r'\b%s\s*\(\s*([A-Za-z_][A-Za-z0-9_]*)\s*\)' %funcname, line)
-    if m:
-        argument_real_name = m.group(1)
-    
-    print('◜AUTO-DEBUG [',argument_real_name,f']◝\n{p}',)
-    print('◟AUTO-DEBUG [',argument_real_name,f']◞','\n')
+class NamePrinter:
+  def __init__(self,funcname,print_fun = print,argprint_lambda = lambda x: x):
+    self.funcname = funcname
+    self.print_fun = print_fun
+    self.argprint_lambda = argprint_lambda
+  def adb(self,p):
+#      return 
+      funcname= self.funcname
+      argument_real_name = None
+      for line in inspect.getframeinfo(inspect.currentframe().f_back)[3]:
+          m = re.search(r'\b%s\s*\(\s*([A-Za-z_][A-Za-z0-9_]*)\s*\)' %funcname, line)
+      if m:
+          argument_real_name = m.group(1)
+
+      self.print_fun('◜[',argument_real_name,f']◝\n{self.argprint_lambda(p)}',)
+      self.print_fun('◟_______◞','\n')
+
+adb = NamePrinter('adb').adb
+sdb = NamePrinter('sdb',argprint_lambda=lambda x : x.shape).adb
     
 class classproperty(property):
     def __get__(self, cls, owner):
@@ -70,15 +90,7 @@ def timed(label="NoLabel"):
         end = time.time()
         print(f"[{label}] used {end - start} s")
         
-class g:
-#     d=False
-    d=True
-    
-    @classmethod
-    def tqdm(cls,iterable):
-        if g.d:
-            return iterable[0:g.lslice:1000]
-        return iterable
+
     
 def iv(func,*args,**kwargs):
 #     print(f'{func.__name__}')
