@@ -22,8 +22,34 @@ tags:
 注意这个语句不可以写在其他文件中
 
 ```python
-exec(compile(open("动态执行的语句", "rb").read(), "tmp.py", 'exec'))
+exec(compile(open("动态执行的代码", "rb").read(), "tmp.py", 'exec'))
 ```
+
+## Imports
+
+```python
+import os
+import warnings
+from pprint import pprint
+from tqdm import tqdm
+
+import torch
+import torch.optim as optim
+import torch.nn as nn
+import torch.nn.functional as F
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import torchvision.transforms as T
+
+from torchvision.io import read_image
+from torch.utils.data import DataLoader, Dataset
+
+import tensorflow as tf
+import gc
+```
+
+
 
 ## 常用函数
 
@@ -81,14 +107,16 @@ def monkeypatch_method_to_class(cls): #为torch tensor等挂载一些函数
 
 # 时间测试工具
 @contextmanager
-def timed(label="NoLabel"):
+def timed(label="NoLabel",enabled = True):
     start = time.time()  # Setup - __enter__
-    print(f"[{label}] time benchmark started")
+    if enabled:
+        print(f"[{label}] time benchmark started")
     try:
         yield  # yield to body of `with` statement
     finally:  # Teardown - __exit__
-        end = time.time()
-        print(f"[{label}] used {end - start} s")
+        if enabled:
+            end = time.time()
+            print(f"[{label}] used {end - start} s")
         
 
     
