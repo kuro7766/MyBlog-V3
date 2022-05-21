@@ -87,8 +87,8 @@ class NamePrinter:
       if m:
           argument_real_name = m.group(1)
 
-      self.print_fun('◜[',argument_real_name,f']◝\n{self.argprint_lambda(p)}',)
-      self.print_fun('◟_______◞','\n')
+      self.print_fun('\n>>>',argument_real_name,f'\n{self.argprint_lambda(p)}',)
+      self.print_fun('<<< --------------','\n')
 
 adb = NamePrinter('adb').adb
 sdb = NamePrinter('sdb',argprint_lambda=lambda x : x.shape).adb
