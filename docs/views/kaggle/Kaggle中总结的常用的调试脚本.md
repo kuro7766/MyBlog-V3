@@ -132,6 +132,30 @@ def iv(func,*args,**kwargs):
 
 ```
 
+# colabcode远程连接
+
+```python
+import time
+from threading import Thread
+import os,re
+! pip install git+https://github.com/kuro7766/colabcode.git
+!ngrok authtoken 27xqdUZec8gJCpJ2g8maHKgQAuA_6uT52UntAv25GP48JzA4?
+from colabcode import ColabCode
+import random
+def a():
+    ColabCode(port=random.randint(10000,12000),lab=True)
+Thread(target=a,name='a').start()
+import pickle,re
+while not os.path.exists("_ng_url.pkl"):
+    time.sleep(1)
+    print('waiting for url')
+with open("_ng_url.pkl", "rb") as f:
+    url = pickle.load(f)
+    print('>>> url')
+    print(re.findall('https://.*.ngrok.io',str(url))[0]+'/?token=123456')
+
+```
+
 
 
 ## Numpy拼接
