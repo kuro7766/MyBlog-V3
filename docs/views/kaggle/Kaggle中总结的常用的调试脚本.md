@@ -128,7 +128,7 @@ def iv(func,*args,**kwargs):
 ## 需要pip安装的工具
 
 ```python
-!pip install py-heat-magic #https://github.com/csurfer/pyheatmagic
+!pip install py-heat-magic 
 
 ```
 
