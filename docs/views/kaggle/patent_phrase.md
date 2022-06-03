@@ -150,6 +150,21 @@ test['anchor'] + '[SEP]' + test['target'] + '[SEP]'  + test['context_text']
 
 https://www.kaggle.com/general/201825
 
+## 如何得到一个好的向量表示?
+
+必然要finetune，但是根据什么?
+
+## 更多的信息?
+
+如何在[此表格](https://www.kaggle.com/datasets/xhlulu/cpc-codes)的基础上挖掘更多的信息，比如给**类做pca**。加一个聚类表示
+
+
+
+## 模型挑选
+
+https://www.kaggle.com/code/tanlikesmath/pretrained-sentence-transformer-model-baseline
+
 ## 参考文章
 
 https://www.kaggle.com/competitions/petfinder-pawpularity-score/discussion/288896
+
