@@ -58,7 +58,7 @@ test['anchor'] + '[SEP]' + test['target'] + '[SEP]'  + test['context_text']
 
 ## ML
 
-此后我又ml的方法，应该不需要重新训练，因为已经在本数据集上训练过。
+此后接上ml的方法，应该不需要重新训练，因为已经在本数据集上训练过。
 
 
 
