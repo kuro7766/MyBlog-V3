@@ -117,7 +117,8 @@ module.exports = {
             sidebarDepth: 2, // 可选的, 默认值是 1
             children: [
               "Kaggle中总结的常用的调试脚本",
-              "第二篇文章"
+              "第二篇文章",
+              "patent_phrase"
               
               // "csdn脚本",
               // "csdn脚本2",
@@ -128,7 +129,7 @@ module.exports = {
         ],
         "/views/others/": [
           {
-            title: "随手一个前端", // 必要的
+            title: "大前端", // 必要的
             sidebarDepth: 2, // 可选的, 默认值是 1
             children: [
               "ffmpeg",
