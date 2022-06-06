@@ -63,6 +63,23 @@ class g:
 #     d=False
     d=True
     
+    # d1 = False
+    d1 = True # explanation -> 
+
+    # d2 = False
+    d2 = True # explanation -> 
+
+    # d3 = False
+    d3 = True # explanation -> 
+
+    # d4 = False
+    d4 = True # explanation -> 
+
+    # d5 = False
+    d5 = True # explanation -> 
+    
+    # d,d1,d2,d3,d4,d5 = False,False,False,False,False,False
+    
     @classmethod
     def tqdm(cls,iterable):
         if g.d:

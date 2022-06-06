@@ -15,6 +15,79 @@ tags:
 
 
 
+
+
+
+
+## 日志记录
+
+
+
+### day16
+
+#### 修复了"吸附"运行失败的问题
+
+#### 公开模型更好的一个
+
+https://www.kaggle.com/competitions/us-patent-phrase-to-phrase-matching/discussion/324330
+
+[0.846](https://www.kaggle.com/code/tanlikesmath/pretrained-sentence-transformer-model-baseline)，额外采用的两种模型
+
+https://huggingface.co/anferico/bert-for-patents
+
+https://huggingface.co/microsoft/cocolm-large
+
+
+
+编写了mlp submission版本
+
+
+
+### day 17
+
+跑通、调试了bert encoder cosine sim的模型，**直接匹配相似度输出结果**，得到一个还不错的分数，pca展示roberta，deberta，cosine sim分数cluster，但是合并之后分数降低了
+
+
+
+- 完成数据加载器，把所有的特征提取出来
+
+- 完成了mlp训练、保存
+
+#### 特征提取:
+
+ 三组cos sim、anchor向量、context向量、target向量
+
+不同的距离编码
+
+#### 未完成
+
+naive baiyes，svr，xgboost、mlp对接
+
+##### 异常点清理
+
+clustering，numeric outlier方法
+
+z-score应该也可以
+
+Isolation Forest应该比较快、DBScan，Isolation Forest
+
+#### 基于分类任务的改进
+
+都拿不准的分大类和小类，0.5 +-，然后把别的剔除，剩下的做回归。
+用多个分类器猜区间
+分两个类和分三个类。
+拿不准的，用回归，拿得准的，用分类无损
+
+#### 吸附功能
+
+加规则 ： 0.26->0.25，**预计hidden dataset也只是分类任务**，如果比较准确的就直接吸附，误差为0，等待结果。和上述分类任务改进结合是**最有希望拿牌子的方法**
+
+
+
+
+
+
+
 ## 数据集的特点
 
 观察数据析发现，人为标注的分数其实是离散的，因此可以用一个**分类模型**来预测分数，目前想的是5分类或者6分类，分类数目如果太多，一旦错误可能会导致误差很大。
@@ -161,62 +234,7 @@ https://www.kaggle.com/general/201825
 
 如何在[此表格](https://www.kaggle.com/datasets/xhlulu/cpc-codes)的基础上挖掘更多的信息，比如给**类做pca**。加一个聚类表示
 
-## 日志记录
 
-### day 17
-
-跑通、调试了bert encoder cosine sim的模型，**直接匹配相似度输出结果**，得到一个还不错的分数，pca展示roberta，deberta，cosine sim分数cluster，但是合并之后分数降低了
-
-
-
-- 完成数据加载器，把所有的特征提取出来
-
-- 完成了mlp训练、保存
-
-#### 特征提取:
-
- 三组cos sim、anchor向量、context向量、target向量
-
-不同的距离编码
-
-#### 未完成
-
-naive baiyes，svr，xgboost、mlp对接
-
-##### 异常点清理
-
-clustering，numeric outlier方法
-
-z-score应该也可以
-
-Isolation Forest应该比较快、DBScan，Isolation Forest
-
-#### 基于分类任务的改进
-
-都拿不准的分大类和小类，0.5 +-，然后把别的剔除，剩下的做回归。
-用多个分类器猜区间
-分两个类和分三个类。
-拿不准的，用回归，拿得准的，用分类无损
-
-#### 吸附功能
-
-加规则 ： 0.26->0.25，**预计hidden dataset也只是分类任务**，如果比较准确的就直接吸附，误差为0，等待结果。和上述分类任务改进结合是**最有希望拿牌子的方法**
-
-
-
-### day16
-
-#### 修复了"吸附"运行失败的问题
-
-#### 公开模型更好的一个
-
-https://www.kaggle.com/competitions/us-patent-phrase-to-phrase-matching/discussion/324330
-
-[0.846](https://www.kaggle.com/code/tanlikesmath/pretrained-sentence-transformer-model-baseline)，额外采用的两种模型
-
-https://huggingface.co/anferico/bert-for-patents
-
-https://huggingface.co/microsoft/cocolm-large
 
 ## 模型挑选
 
