@@ -21,7 +21,15 @@ tags:
 
 ## 日志记录
 
+### day14
 
+预计从以下几个方面入手
+
+- encoder vector生成
+
+- ml models
+
+- score stacking策略
 
 ### day16
 
