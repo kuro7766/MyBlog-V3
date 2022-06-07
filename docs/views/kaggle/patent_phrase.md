@@ -31,6 +31,10 @@ tags:
 
 - score stacking策略
 
+  
+
+  模型融合方法 https://www.6aiq.com/article/1536427413103
+
 ### day16
 
 #### 修复了"吸附"运行失败的问题
