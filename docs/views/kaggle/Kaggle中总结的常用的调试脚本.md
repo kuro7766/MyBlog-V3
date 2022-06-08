@@ -176,7 +176,7 @@ with open("_ng_url.pkl", "rb") as f:
     url = pickle.load(f)
     print('>>> url')
     print(re.findall('https://.*.ngrok.io',str(url))[0]+'/?token=123456')
-
+os.remove('_ng_url.pkl')
 ```
 
 
