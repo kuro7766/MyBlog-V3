@@ -86,11 +86,38 @@ class g:
     
     # d,d1,d2,d3,d4,d5,d6,d7,d8 = False,False,False,False,False,False,False,False,False
     
-    @classmethod
-    def tqdm(cls,iterable):
-        if g.d:
-            return iterable[0:g.lslice:1000]
-        return iterable
+import uuid
+
+class EnvHelper:
+    def new_name(self):
+        return uuid.uuid4().__str__().replace('-','_')
+    def __init__(self):
+        self.data = {}
+    def save(self,*names):
+        commands = []
+        for n in names:
+            commands.append(f'global {n}')
+            if (not self.data) or not self.data.__contains__(n):
+                print(n)
+                self.data[n] = []
+        for n in names:
+            new_name = n + self.new_name()
+            self.data[n].append(new_name)
+            commands.append(f'global {new_name}')
+            commands.append(f'{new_name} = {n}')
+            commands.append(f'{n} = None')
+        exec(compile('\n'.join(commands), "tmp.py", 'exec'))
+    def restore(self,*names):
+        commands = []
+        for n in names:
+            commands.append(f'global {n}')
+            if not self.data.__contains__(n):
+                raise f"{n} not saved !"
+        for n in names:
+            shadow_name = self.data[n].pop()
+            commands.append(f'global {shadow_name}')
+            commands.append(f'{n} = {shadow_name}')
+        exec(compile('\n'.join(commands), "tmp.py", 'exec'))
     
 def dbg(*args, **kwargs):
 #     return
