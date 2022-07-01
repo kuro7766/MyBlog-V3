@@ -49,6 +49,15 @@ import tensorflow as tf
 import gc
 ```
 
+## v2ray代理
+
+用于解决huggingface，wandb等网络问题。Idea系列的代理等也是这个端口。Proxychains系列是Sock5 10808端口。
+
+```python
+os.environ['http_proxy'] = "http://127.0.0.1:10809" 
+os.environ['https_proxy'] = "http://127.0.0.1:10809"
+```
+
 
 
 ## 常用函数
