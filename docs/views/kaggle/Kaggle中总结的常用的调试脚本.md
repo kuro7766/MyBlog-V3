@@ -63,6 +63,7 @@ os.environ['https_proxy'] = "http://127.0.0.1:10809"
 ## 常用函数
 
 ```python
+from __future__ import print_function
 import inspect, re
 
 from contextlib import contextmanager
@@ -152,7 +153,7 @@ class NamePrinter:
 adb = NamePrinter('adb').adb
 sdb = NamePrinter('sdb',argprint_lambda=lambda x : x.shape).adb
 
-from __future__ import print_function
+
 from IPython.core.magic import Magics, magics_class, line_magic,cell_magic
 
 @magics_class
