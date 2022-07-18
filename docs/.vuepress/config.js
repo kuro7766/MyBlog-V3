@@ -118,8 +118,8 @@ module.exports = {
             children: [
               "Kaggle中总结的常用的调试脚本",
               "第二篇文章",
-              "patent_phrase"
-              
+              "patent_phrase",
+              "feedback比赛记录"
               // "csdn脚本",
               // "csdn脚本2",
               // "Kaggle中总结的常用的调试脚本"

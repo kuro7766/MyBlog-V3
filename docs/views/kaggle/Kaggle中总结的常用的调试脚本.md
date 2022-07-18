@@ -152,6 +152,7 @@ class NamePrinter:
 
 adb = NamePrinter('adb').adb
 sdb = NamePrinter('sdb',argprint_lambda=lambda x : x.shape).adb
+tdb = NamePrinter('tdb',argprint_lambda=lambda x : (time.sleep(1),x)[1]).adb
 
 
 from IPython.core.magic import Magics, magics_class, line_magic,cell_magic
