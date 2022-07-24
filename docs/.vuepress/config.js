@@ -225,6 +225,13 @@ module.exports = {
     searchMaxSuggestions: 10, // 插件
     plugins: [
       [
+        '@vuepress/pwa',
+        {
+          serviceWorker: false,
+          // updatePopup: true
+        }
+      ],
+      [
         "meting",
         {
           // metingApi: "https://meting.sigure.xyz/api/music",
