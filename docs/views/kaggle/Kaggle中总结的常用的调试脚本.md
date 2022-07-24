@@ -96,6 +96,7 @@ class g:
     
     # d,d1,d2,d3,d4,d5,d6,d7,d8 = False,False,False,False,False,False,False,False,False
     
+    seed = 42
 import uuid
 
 class EnvHelper:
