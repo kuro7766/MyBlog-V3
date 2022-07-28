@@ -64,11 +64,12 @@ os.environ['https_proxy'] = "http://127.0.0.1:10809"
 
 ```python
 from __future__ import print_function
-import inspect, re
+import inspect, re,os
 
 from contextlib import contextmanager
 import time
 
+# os.environ["WANDB_DISABLED"] = "true"
 class g:
 #     d=False
     d=True
