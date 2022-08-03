@@ -80,3 +80,63 @@ tags:
 在预处理的时候计算mask，然后直接mask_fill作用于最后一层
 
 ![](http://kuroweb.tk/picture/16591089156903596.jpg)
+
+
+
+找到了一个别人的base，运行了两遍，分数几乎一样
+
+![](http://kuroweb.tk/picture/16594198833918976.jpg)
+
+## baseline & improve
+
+![](C:\Users\1\AppData\Roaming\Typora\typora-user-images\image-20220803191354913.png)
+
+把bert最后两层直接加起来，可以实现更好的效果。为了探究其中的原因，我们来看一下train loss。
+
+![](http://kuroweb.tk/picture/16595254938246282.jpg)
+
+我们以后半部分作为观察对象，可见在绝大部分的位置上，后两层相加的模型的loss显然更优，这也说明网络在这样的结构下，更容易找到梯度。因此后续的工作应该集中在如何找到更快下降的loss上，如果发现loss明显下降的更快，则有更大的概率是eval也更优的模型。
+
+
+
+## 其他尝试
+
+- deberta base 512
+
+  
+
+似乎不work
+
+长度增长可见有明显的问题，很可能是淹没了短句子的效果。
+
+loss图像，train loss偏高，且更早的达到了过拟合。。
+
+![](http://kuroweb.tk/picture/16595261404163210.jpg)
+
+
+
+- deberta large 384
+
+没有得到更好的效果，loss下降变得困难，可能是因为搜索空间太大了。
+
+训练loss偏高，甚至和上面的base512也有一定的差距。且过拟合发生的时间较早。猜测模型可能关注更深的信息，而针对本数据集没有那么多的信息要学习。
+
+![](http://kuroweb.tk/picture/16595262821585440.jpg)
+
+
+
+- deberta base 360
+
+两者几乎持平，说明长度变少并未变弱模型的效果。后面可以进一步尝试，继续减少长度。
+
+![](http://kuroweb.tk/picture/16595267143843442.jpg)
+
+eval loss最优大概减少了0.0003个点，继续来看一下train loss后半段
+
+![](http://kuroweb.tk/picture/16595274436582224.jpg)
+
+max_len 360的train loss最低点比baseline更优，同时最优eval loss也是在这个点左右完成的。可见模型train loss下降的越快、更低，越能找到更真正的东西。train loss和eval loss是一致的
+
+
+
+可参考的最优loss为 **0.456~0.457**
