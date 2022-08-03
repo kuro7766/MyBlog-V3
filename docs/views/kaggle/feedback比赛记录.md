@@ -87,7 +87,7 @@ tags:
 
 ## baseline & improve
 
-- baseline
+### baseline
 
  CV大概在0.6左右，由于是 straight K fold，所以每个fold的CV差不多。
 
@@ -99,7 +99,7 @@ tags:
 
 后续的模型改进都和这个曲线做对比。
 
-- baseline后两层相加
+### baseline后两层相加
 
 ![](C:\Users\1\AppData\Roaming\Typora\typora-user-images\image-20220803191354913.png)
 
@@ -113,7 +113,7 @@ tags:
 
 
 
-- 后两层+1个可学习权重
+### <a name="1"></a> 后两层+1个可学习权重
 
 ![](http://kuroweb.tk/picture/16595367798825914.jpg)
 
@@ -122,6 +122,24 @@ tags:
 ![](http://kuroweb.tk/picture/16595371488447532.jpg)
 
 同时eval loss 也在第三个epoch的时候达到了和 Baseline模型相持平的水平，后续改进有较大的可能性。
+
+
+
+### 后两层两个动态权重
+
+![](http://kuroweb.tk/picture/16595443671352084.png)
+
+
+
+非常有效，train loss达到了0.43，在3.26 epoch，降低了0.02，前所未有的低
+
+
+
+由于eval的频次有点低，导致最低点处没有eval，所以没有体现出来
+
+![](http://kuroweb.tk/picture/16595444895616866.png)
+
+所以这个方法和[link](#1)都需要设置eval为3 or 4/per epoch左右才可以显示出来效果
 
 ## 其他尝试
 
