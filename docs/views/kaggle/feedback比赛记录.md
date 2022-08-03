@@ -139,7 +139,7 @@ tags:
 
 ![](http://kuroweb.tk/picture/16595444895616866.png)
 
-所以这个方法和[link](#1)都需要设置eval为3 or 4/per epoch左右才可以显示出来效果
+所以这个方法和[后两层+1个可学习权重](#1)都需要设置eval为3 or 4/per epoch左右才可以显示出来效果
 
 ## 其他尝试
 
