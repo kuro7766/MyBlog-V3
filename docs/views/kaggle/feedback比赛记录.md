@@ -127,7 +127,19 @@ best eval loss: **0.5958 -> 0.5857**
 
 
 
-同样的我把baseline也调整为4 eval per epoch，结果的对比如下图所示
+同样的我把baseline也调整为4 eval per epoch
+
+
+
+### 添加外部数据和特征
+
+仿照[bert topic](https://www.kaggle.com/competitions/feedback-prize-effectiveness/discussion/333277)的思路，我添加了另一个模型。
+
+基于[phrasebank数据集](https://www.phrasebank.manchester.ac.uk/)的分类模型，该数据集质量比较高，并且和写作的相关性比较大，我们可以提取它的分类前的logits作为本任务的预处理特征
+
+![](http://kuroweb.tk/picture/16602927485311630.jpg)
+
+v29在v19（baseline）上面有了小幅度的提升，效果和berttopic类似。可见，添加和数据集相关的数据是比较稳定的上分方法。根据No free lunch theory，没有一种在任何任务上表现的都很好的模型。
 
 ## 其他尝试
 
@@ -194,11 +206,11 @@ max_len 360的train loss最低点比baseline更优，同时最优eval loss也是
 
 ### top layer reinitialization
 
-因为语言模型的浅层保存的是通用的特征，靠近输出的地方是更加 task specific特征。之前的任务保留的权重可能会对当前任务造成一些的限制
+因为语言模型的浅层保存的是通用的特征，靠近输出的地方是更加 task specific特征。之前的mlm任务保留的权重可能会对当前任务造成一些的限制
 
 ![](http://kuroweb.tk/picture/16597132571626208.png)
 
-但是运行之后发现这么做反而是最差的，如图中v16两个曲线（红蓝）
+但是运行之后发现这么做反而是最差的，如图中v16两个曲线（红蓝），在所有曲线的最上层
 
 ### 加入人工抽取的关键词
 
@@ -210,7 +222,7 @@ max_len 360的train loss最低点比baseline更优，同时最优eval loss也是
 you your they we i think but also these some many people because there are
 ```
 
-是我认为写的比较差的作文里常用的词汇
+是我认为写的比较差的作文里常用的词汇。经尝试提升不明显。
 
 
 
@@ -226,8 +238,6 @@ you your they we i think but also these some many people because there are
 
 - 2.ShortSentence
 
-  
-
   本次的任务是段文本分类，长文本作为上下文来使用。由于bert是微调的，输出位置的短文本位置保留了短文本这部分的信息，如果短文本需要一些额外信息，他可以自己去长文本里查询——如果这一点成立，那么不一定需要用text CNN，作用在局部的mean pooling也可以试一试。
 
 ![](http://kuroweb.tk/picture/16591082895515714.jpg)
@@ -242,3 +252,88 @@ you your they we i think but also these some many people because there are
 
 
 
+经过尝试，效果不佳。
+
+
+
+### Longformer相关的尝试
+
+因为比赛的举办方曾经用这次比赛数据集的另一部分举办过一次比赛。并且在那次比赛中longformer是sota，所以我在这里尝试但是似乎并不适合。
+
+
+
+#### 把作文尾句放在前面
+
+大家都知道写作的时候，作文的尾句是比较重要的东西，一般都是总结文章重新重申主题，并且语言通常是比较干净的。
+
+![](http://kuroweb.tk/picture/16602940912477520.jpg)
+
+cv在0.76
+
+
+
+#### 浅层隐藏层权重
+
+语言模型的浅层保存的是通用的特征，深层是更加抽象的特征，但是如果数据的量不够，深层的模型反而对训练会造成阻碍。
+
+已知 deberta base->deberta large 会 cv+0.02，但是从12层->25层这样粗暴的调整它，肯定还有某些层是更优的，就是这样的调参是非常粗略的。关于模型的深浅度只有两种情况，一种是模型太深，一种是太浅。
+
+太浅的解决办法就是向后面添加更多的层，fcl，rnn，attention均可。剩下的部分就是世界当前算力的限制，大部分人都难以突破。
+
+太深的解决办法，就是只看某浅层hidden layer的输出，在梯度下降的时候忽视深层网络里面的输出，阻止其梯度下降。因为我们知道在数据的分布比较简单的数据集中，如果用太深的网络，反而会导致收敛慢精度低的问题，浅层的神经网络在此方面反而表现的更好。
+
+让NLP深度模型变浅有几种办法：
+
+1.冻结前几层
+
+2.丢弃后几层
+
+
+
+但是这个几层是怎么确定的呢？如果不断的调参是非常麻烦的。可以给每个隐藏层加权加起来，作为最后的隐藏层输出，模型梯度下降会自己去找，下降速度最快的那一层。
+
+实验证明，这样效果不错，是比较通用且稳定的上分办法。
+
+#### Attention Pooling
+
+```python
+class AttentionHead(nn.Module):
+    def __init__(self, in_size: int = 768, hidden_size: int = 512) -> None:
+        super(AttentionHead,self).__init__()
+        self.W = nn.Linear(in_size, hidden_size)
+        self.V = nn.Linear(hidden_size, 1)
+        self.dropout = nn.Dropout(0.1)
+
+    def forward(self, features):
+        att = torch.tanh(self.W(features))
+        score = self.V(att)
+        # sdb(score)
+        # adb(score)
+        attention_weights = torch.softmax(score, dim=1)
+        # adb(attention_weights)
+        # sdb(features)
+        context_vector = attention_weights * features
+        context_vector = torch.sum(context_vector, dim=1)
+        output = self.dropout(context_vector)
+        return output
+```
+
+attention pooling 可以作为一种选择，和cnn、lstm、meanpooling类似。
+
+#### 冻结+多层lstm pooling
+
+❌效果很差
+
+
+
+#### Shuffle vs Order
+
+经过[EDA](https://kuro7766.github.io/FeedbackEda/build/web/)观察，我发现同一篇文章中，那些得分和本文大部分评分不一样的地方，比如说全文都是effective，只有一个句子是ineffective，那么这个句子打分的置信度会非常低。经过观察这是非常普遍的现象。可以尝试一下用一个单独的分类器来分类是否为置信度低的样本，然后把logits送给fcl。
+
+
+
+### 其他还未尝试想法
+
+加入ML book的特征
+
+加外部数据
