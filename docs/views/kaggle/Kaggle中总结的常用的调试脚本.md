@@ -168,6 +168,7 @@ class MyMagics(Magics):
         # get cmagic args
         args = line.split(' ')
         for i in range(int(args[0])):
+            print('>>> loop',i+1,'of',args[0])
             self.shell.run_cell(cell, store_history=False)
 
 get_ipython().register_magics(MyMagics)
