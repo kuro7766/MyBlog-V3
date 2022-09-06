@@ -7,7 +7,16 @@ categories:
   
 tags:
 - kaggle
+
 ---
+
+
+
+
+
+---
+
+
 
 <!-- more -->
 
@@ -23,8 +32,13 @@ tags:
 
 - v39-shuffle_nopreload: 无预训练模型
 - v46：无预训练模型，仅训练后2层
-
 - v39-shuffle_nopreload: 预训练模型
+
+
+
+---
+
+
 
 ![](http://kuroweb.tk/picture/16591073049762930.jpg)
 
@@ -34,9 +48,15 @@ tags:
 
 ![](http://kuroweb.tk/picture/16591075317336250.jpg)
 
+---
+
 
 
 ## 模型学习了什么
+
+---
+
+
 
 ### 打分可视化
 
@@ -55,6 +75,8 @@ tags:
 
 第2点是难以学习的，因为这部分句子往往不超过整个句子的10%，模型难以关注这部分。如何才能让模型更好的关注到这部分的信息？
 
+---
+
 
 
 ## baseline & improve
@@ -71,9 +93,13 @@ tags:
 
 后续的模型改进都和这个曲线做对比。
 
+---
+
+
+
 ### baseline后两层相加
 
-![](C:\Users\1\AppData\Roaming\Typora\typora-user-images\image-20220803191354913.png)
+![](http://kuroweb.tk/picture/16622917010122740.png)
 
 
 
@@ -82,6 +108,8 @@ tags:
 ![](http://kuroweb.tk/picture/16595254938246282.jpg)
 
 我们以后半部分作为观察对象，可见在绝大部分的位置上，后两层相加的模型的loss显然更优，这也说明网络在这样的结构下，更容易找到梯度。因此后续的工作应该集中在如何找到更快下降的loss上，如果发现loss明显下降的更快，则有更大的概率是eval也更优的模型。
+
+---
 
 
 
