@@ -28,8 +28,9 @@ tags:
 ---
 
 **目录**
-
+<div class="overflow-auto h-100">
 <toc/>
+</div>
 
 ---
 
@@ -48,7 +49,7 @@ tags:
 
 ---
 
-**数据集**
+**数据集解释**
 
 - evaluation_ids.csv
 
@@ -66,22 +67,36 @@ tags:
 ---
 
 
-- evaluation_ids.csv
+### evaluation_ids.csv
 
 
 <img src="http://kuroweb.tk/picture/16624378953676982.jpg"  class="h-100 mx-auto" />
 
 ---
 
-- metadata.csv
+### metadata.csv
 
 <!-- ![](http://kuroweb.tk/picture/16624379455884908.jpg) -->
 描述了测量天数，捐赠者，细胞类型（不准确），测量技术
 <img src="http://kuroweb.tk/picture/16624379455884908.jpg"  class="h-90 mx-auto my-10" />
 
+MasP = Mast Cell Progenitor
+
+MkP = Megakaryocyte Progenitor
+
+NeuP = Neutrophil Progenitor
+
+MoP = Monocyte Progenitor
+
+EryP = Erythrocyte Progenitor
+
+HSC = Hematoploetic Stem Cell
+
+BP = B-Cell Progenitor
+
 ---
 
-- sample_submission.csv
+### sample_submission.csv
 
 和`evaluation_ids.csv`一一对应
 
@@ -108,25 +123,31 @@ cite和multi分别对应citeseq和multiome
 
 Cite有48663个测试行，Multi有55935个行（行=单元格的数量）。Multi只是使用了30%的行，意味着它实际上有16780个单元格。
 
----
-
-- test_cite_inputs.h5
-- test_multi_inputs.h5
-- train_cite_inputs.h5
 
 ---
 
-- train_cite_targets.h5
+### train_cite_inputs.h5
 
-<img src="http://kuroweb.tk/picture/16624673725193884.jpg" class="h-50 ">
+![](http://kuroweb.tk/picture/16624742874412884.jpg)
+
+每个细胞有22050个特征，且大部分为0。表格没有缺失值。
+
+---
+
+### train_cite_targets.h5
+
+<img src="http://kuroweb.tk/picture/16624673725193884.jpg" class="h-45 ">
 <div class="text-xs">
 70988 cell × 140 
 
 140列为已被dsb归一化的相同细胞的表面蛋白水平。
 
+target 是 140 ，可以用140个机器学习器(lgbm xgb)，也可以全部预测用cell做mse loss或pearson loss
+
 </div>
 
-重要的列
+
+Gene列的名称有蛋白质关系
 <div class="text-xs">
 Important_cols is the set of all features whose name matches the name of a target protein. If a gene is named 'ENSG00000114013_CD86', it should be related to a protein named 'CD86'. These features will be used for the model unchanged, that is, they don't undergo dimensionality reduction.
 </div>
@@ -142,8 +163,27 @@ CD86 CD274 CD270 CD155 CD112 CD47 CD48 CD40 CD154 CD52 CD3 CD8 CD56 CD19 CD33 CD
 
 ---
 
-- train_multi_inputs.h5
-- train_multi_targets.h5
+### train_multi_inputs.h5
+
+
+---
+
+### train_multi_targets.h5
+
+
+![](http://kuroweb.tk/picture/16624746724185248.jpg)
+
+每个细胞23418个目标
+
+---
+
+### 测试集
+
+两个测试集，除了没有标签之外其他和train相同
+
+- test_cite_inputs.h5
+- test_multi_inputs.h5
+
 
 ---
 
@@ -172,6 +212,30 @@ CD86 CD274 CD270 CD155 CD112 CD47 CD48 CD40 CD154 CD52 CD3 CD8 CD56 CD19 CD33 CD
 训练时间无限，训练资源无限
 
 
+<!-- ### 数据读取内存占用 -->
+
+
+<!-- <table>
+  <tr>
+    <th>操作</th>
+    <th>内存占用</th>
+  </tr>
+  <tr>
+    <td>
+    <img src="http://kuroweb.tk/picture/16624739567431190.jpg" class="h-30"/>
+    </td>
+    <td>9G</td>
+  </tr>
+  <tr>
+    <td>
+    <img src="http://kuroweb.tk/picture/16624749422558816.jpg" class="h-35"/>
+    </td>
+    <td>7G</td>
+  </tr>
+</table> -->
+
+
+
 ---
 
 ### CV划分
@@ -191,7 +255,7 @@ kf.split(X, groups=meta.donor)
 
 ---
 
-### 基于TensorCSR编写Pytorch模型
+### 模型训练-Pytorch
 
 ```
 config = dict(
@@ -220,13 +284,10 @@ class MLP(nn.Module):
 
 ---
 
-### 人工特征+PCA/SVD降维+树模型/MLP
+### 模型训练-降维
 
+- 人工特征+PCA/SVD降维+树模型/MLP
 
-编码器解码器
-
-
-target 是 140 ，140个机器学习器
 
 
 --- 
@@ -255,7 +316,7 @@ class NegativeCorrLoss(nn.Module):
         return -r
 </pre></td>
     <td>
-    <pre  class="slidev-code shiki shiki-light">def criterion(outputs, labels):
+    <pre  class="slidev-code shiki shiki-light text-red-600">def criterion(outputs, labels):
     """ MSE Loss function"""
     return nn.MSELoss()(outputs, labels)</pre>
     </td>
@@ -263,7 +324,7 @@ class NegativeCorrLoss(nn.Module):
 </table>
 
 
-> 两者可以都尝试一下
+> 两个可以都尝试一下
 
 ---
 
