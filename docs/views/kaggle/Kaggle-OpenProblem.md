@@ -51,6 +51,7 @@ tags:
 
 **数据集解释**
 
+
 - evaluation_ids.csv
 
 - metadata.csv
@@ -63,6 +64,21 @@ tags:
 - train_cite_targets.h5
 - train_multi_inputs.h5
 - train_multi_targets.h5
+
+---
+
+本次比赛有两个任务，一个是citeseq，一个是multiome，可以看成两个比赛
+
+cite和multi分别对应citeseq和multiome
+
+>For the **Multiome** samples: given chromatin accessibility, predict gene expression. **DNA->RNA**
+
+<br/>
+
+
+>For the **CITEseq** samples: given gene expression, predict protein levels. **RNA->Protein**
+
+0.743 for **CITE** and 0.257 for MULTI
 
 ---
 
@@ -109,19 +125,6 @@ BP = B-Cell Progenitor
 | :---: | :---: |
 | <img src="http://kuroweb.tk/picture/16624378953676982.jpg"  class="h-80 mx-auto" /> | <img src="http://kuroweb.tk/picture/16624380043696516.jpg"  class="h-80 mx-auto" /> |
 
----
-
-本次比赛有两个任务，一个是citeseq，一个是multiome，可以看成两个比赛
-
-cite和multi分别对应citeseq和multiome
-
->For the Multiome samples: given chromatin accessibility, predict gene expression. **DNA->RNA**
-
->For the CITEseq samples: given gene expression, predict protein levels. **RNA->Protein**
-
-0.743 for SITE and 0.257 for MULTI
-
-Cite有48663个测试行，Multi有55935个行（行=单元格的数量）。Multi只是使用了30%的行，意味着它实际上有16780个单元格。
 
 
 ---
@@ -130,7 +133,7 @@ Cite有48663个测试行，Multi有55935个行（行=单元格的数量）。Mul
 
 ![](http://kuroweb.tk/picture/16624742874412884.jpg)
 
-每个细胞有22050个特征，且大部分为0。表格没有缺失值。
+**Citeseq**中每个细胞有22050个特征，且大部分为0。表格没有缺失值。
 
 ---
 
@@ -165,6 +168,9 @@ CD86 CD274 CD270 CD155 CD112 CD47 CD48 CD40 CD154 CD52 CD3 CD8 CD56 CD19 CD33 CD
 
 ### train_multi_inputs.h5
 
+![](http://kuroweb.tk/picture/16624779515513820.jpg)
+
+每个细胞有22万个特征
 
 ---
 
@@ -187,8 +193,25 @@ CD86 CD274 CD270 CD155 CD112 CD47 CD48 CD40 CD154 CD52 CD3 CD8 CD56 CD19 CD33 CD
 
 ---
 
+### 汇总
 
-## 训练相关
+综上所述
+
+
+- mutiome任务，输入维度22万，输出标签23418个
+
+- citeseq任务，输入维度2万，输出标签140个
+
+<br/>
+<br/>
+
+数据量巨大
+
+**⭐在降维特征选择和数据加载上都具有挑战**
+
+---
+
+## 模型&提交相关
 
 
 
@@ -202,14 +225,9 @@ CD86 CD274 CD270 CD155 CD112 CD47 CD48 CD40 CD154 CD52 CD3 CD8 CD56 CD19 CD33 CD
   }
   </style>
 
---- 
-
-### 比赛特点
-
-本次比赛只需要提交submission.csv，也就是纯表格赛
+---
 
 
-训练时间无限，训练资源无限
 
 
 <!-- ### 数据读取内存占用 -->
@@ -236,7 +254,6 @@ CD86 CD274 CD270 CD155 CD112 CD47 CD48 CD40 CD154 CD52 CD3 CD8 CD56 CD19 CD33 CD
 
 
 
----
 
 ### CV划分
 
@@ -288,7 +305,15 @@ class MLP(nn.Module):
 
 - 人工特征+PCA/SVD降维+树模型/MLP
 
+<div class="mx-10 my-5">
 
+```mermaid
+graph LR
+A[人工特征] --> B[PCA/SVD]
+B --> C[树模型/MLP]
+```
+
+</div>
 
 --- 
 
@@ -300,7 +325,7 @@ class MLP(nn.Module):
     <th>MSE</th>
   </tr>
   <tr>
-    <td><pre class="slidev-code shiki shiki-light">
+    <td><pre class="slidev-code " style="color: white; background-color: black;">
 class NegativeCorrLoss(nn.Module):
     def __init__(self):
         super().__init__()
@@ -316,7 +341,7 @@ class NegativeCorrLoss(nn.Module):
         return -r
 </pre></td>
     <td>
-    <pre  class="slidev-code shiki shiki-light text-red-600">def criterion(outputs, labels):
+    <pre  class="slidev-code" style="color: white; background-color: black;">def criterion(outputs, labels):
     """ MSE Loss function"""
     return nn.MSELoss()(outputs, labels)</pre>
     </td>
@@ -326,9 +351,15 @@ class NegativeCorrLoss(nn.Module):
 
 > 两个可以都尝试一下
 
+<style>
+  pre{
+    background-color: #1e1e1e;
+    color: #ffffff;
+  }
+  </style>
 ---
 
-## ensemble策略
+### ensemble策略
 
 
 
@@ -347,7 +378,7 @@ This is one of the benefit of the loss function that is agnostic to linear trans
 
 作者做了一个实验
 
-<img src="http://kuroweb.tk/picture/16624668586941400.jpg" class="h-35 mx-auto">
+<img src="http://kuroweb.tk/picture/16624793423530324.jpg" class="h-35 mx-auto">
 
 <br/>
 <br/>
@@ -357,3 +388,11 @@ This is one of the benefit of the loss function that is agnostic to linear trans
 |:--:|:--:|
 0.92417836 | 0.94238122
 
+---
+
+### 比赛特点
+
+本次比赛只需要提交submission.csv，也就是纯表格赛。人数会非常多。
+
+
+训练时间无限，可无限融合
