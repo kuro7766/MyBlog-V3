@@ -364,12 +364,6 @@ class NegativeCorrLoss(nn.Module):
 
 > 两个可以都尝试一下
 
-<style>
-  pre{
-    background-color: #1e1e1e;
-    color: #ffffff;
-  }
-  </style>
 ---
 
 ### ensemble策略
@@ -391,7 +385,7 @@ This is one of the benefit of the loss function that is agnostic to linear trans
 
 作者做了一个实验
 
-<img src="http://kuroweb.tk/picture/16624793423530324.jpg" class="h-35 mx-auto">
+<img src="http://kuroweb.tk/picture/16624793423530324.jpg" class="h-40 mx-auto">
 
 <br/>
 <br/>
