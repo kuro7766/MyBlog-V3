@@ -34,18 +34,12 @@ tags:
 
 ---
 
+<div class="text-center m-50" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
+
 ## 数据集
 
+</div>
 
-<style>
-  h2 {
-    text-align: center;
-    margin:200px;
-    background: #aaaaaa;
-    text-shadow: 0 0 10px #000000;
-    color: #ffffff;
-  }
-  </style>
 
 ---
 
@@ -79,6 +73,16 @@ cite和multi分别对应citeseq和multiome
 >For the **CITEseq** samples: given gene expression, predict protein levels. **RNA->Protein**
 
 0.743 for **CITE** and 0.257 for MULTI
+
+<table style="transform: scale(0.8);transform-origin: 0 0;">
+  <tr>
+    <td><img src="https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F6537187%2Fbf8c54a125ecfd986cd30c5ecc0724a2%2Fcentral_dogma2.PNG?generation=1661118946987012&alt=media"></td>
+    <td><img src="https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F6537187%2F1997e2ec55923d44b4d0a53221311456%2Fsub_pic.PNG?generation=1661117789631290&alt=media"/>
+    row中的每一个(cell_id,gene_id)对是二维单元格的位置
+    </td>
+  </tr>
+</table>
+
 
 ---
 
@@ -202,6 +206,19 @@ CD86 CD274 CD270 CD155 CD112 CD47 CD48 CD40 CD154 CD52 CD3 CD8 CD56 CD19 CD33 CD
 
 - citeseq任务，输入维度2万，输出标签140个
 
+
+<table style="transform: scale(0.8);transform-origin: 0 0;">
+  <tr>
+    <td><img src="https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F6537187%2Fbf8c54a125ecfd986cd30c5ecc0724a2%2Fcentral_dogma2.PNG?generation=1661118946987012&alt=media"></td>
+    <td><img src="https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F6537187%2F1997e2ec55923d44b4d0a53221311456%2Fsub_pic.PNG?generation=1661117789631290&alt=media"/>
+    row中的每一个(cell_id,gene_id)对是二维单元格的位置
+    </td>
+  </tr>
+</table>
+
+
+
+
 <br/>
 <br/>
 
@@ -211,19 +228,13 @@ CD86 CD274 CD270 CD155 CD112 CD47 CD48 CD40 CD154 CD52 CD3 CD8 CD56 CD19 CD33 CD
 
 ---
 
+
+
+<div class="text-center m-50" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
+
 ## 模型&提交相关
 
-
-
-<style>
-  h2{
-    text-align: center;
-    margin:200px;
-    background: #aaaaaa;
-    text-shadow: 0 0 10px #000000;
-    color: #ffffff;
-  }
-  </style>
+</div>
 
 ---
 
@@ -310,7 +321,9 @@ class MLP(nn.Module):
 ```mermaid
 graph LR
 A[人工特征] --> B[PCA/SVD]
-B --> C[树模型/MLP]
+B --> C[树模型/ML模型/MLP]
+A --> D[TensorCSR]
+D --> C
 ```
 
 </div>
