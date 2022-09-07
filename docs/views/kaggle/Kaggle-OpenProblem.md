@@ -21,20 +21,23 @@ categories:
 - kaggle
 tags:
 - kaggle
+
 ---
+
+
 
 # Kaggle-OpenProblem
 
 ---
 
-**目录**
-<div class="overflow-auto h-100">
-<toc/>
+<div class="text-center p-5 text-3xl my-5" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
+目录
 </div>
+<toc columns="2"/>
 
 ---
 
-<div class="text-center m-50" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
+<div class="text-center m-50 py-3" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
 
 ## 数据集
 
@@ -170,6 +173,14 @@ CD86 CD274 CD270 CD155 CD112 CD47 CD48 CD40 CD154 CD52 CD3 CD8 CD56 CD19 CD33 CD
 
 ---
 
+CD含义: Cluster of Differentiation 分化簇
+
+[Cluster map绘制](https://www.kaggle.com/code/alexandervc/mmscel-eda-bioinfo?scriptVersionId=103869738&cellId=17)
+
+<img src="https://www.kaggleusercontent.com/kf/103869738/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..Qxo2vqnFj36tKku3iGDUjg.cqBRpguWt4AXnnHtrdPBdtsEIBlcE50_H6tSMxGHzM-mc2fibz1sYn5dKLOfFQ1D31e1DH4-eKai0Vie381hCFKhfKh8yhKflidslk2dGTaXBkuIAt_4aoCSyUq5mO4zPh5llG0b-SiK9PtiXcXfccH3ZXV-Jd01QJZwxasd4oS5QHCsk4hS9b8d41oeHY_jNNID1wh2rKtrRhdE9rXBFaLf4-O52DG4VEb9bERAHmPYubGGJdQUhxhXerFKCqtey5jvByOvmguIwrVrGsVKoIPWu9GxPGlydYs86MH4XjRPOLF6Sgbg2Ka75bhn2pZR6nyRjVskIY2GbkuKvVBE2Q0wRjn_D06nU0RHeGSXpiNgFvzM2v_rENhOkaUJvSLunaoyE8nd4DFeuaU64rTG2ZoEqCer92CkuMIodWvga7-wEAzudUxaH5DlfT4glLRTyGRh3w7urfZYB_OzSHmgX6UMLIZobC-t70Km2peo9LAEI66fKpv1s5TFQgvSnmeMy2PGP3uj1Nxr67pUnry-Ki0ODi3iO3hBIkw_mOXf0YGKNgauZ426WST2ZtHFSmuJ72lcLNgePqGCpBdmvdvSe8MA0vnvHx7Zazmt5W9xJVElkLhocdcvpTU-HUygZbeFm0oENoHiGw_mkNqt15wFQAmaBjRhETgT9rKelvnUgng.eha20wzVe1ANIB8MHdtqXg/__results___files/__results___16_2.png" class="h-100 mx-7"/>
+
+---
+
 ### train_multi_inputs.h5
 
 ![](http://kuroweb.tk/picture/16624779515513820.jpg)
@@ -206,6 +217,9 @@ CD86 CD274 CD270 CD155 CD112 CD47 CD48 CD40 CD154 CD52 CD3 CD8 CD56 CD19 CD33 CD
 
 - citeseq任务，输入维度2万，输出标签140个
 
+数据量巨大
+
+**⭐在特征降维和数据加载上都具有挑战**
 
 <table style="transform: scale(0.8);transform-origin: 0 0;">
   <tr>
@@ -218,26 +232,17 @@ CD86 CD274 CD270 CD155 CD112 CD47 CD48 CD40 CD154 CD52 CD3 CD8 CD56 CD19 CD33 CD
 
 
 
-
-<br/>
-<br/>
-
-数据量巨大
-
-**⭐在降维特征选择和数据加载上都具有挑战**
-
 ---
 
 
 
-<div class="text-center m-50" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
+<div class="text-center m-50 py-3" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
 
 ## 模型&提交相关
 
 </div>
 
 ---
-
 
 
 
@@ -320,7 +325,7 @@ class MLP(nn.Module):
 
 ```mermaid
 graph LR
-A[人工特征] --> B[PCA/SVD]
+A[人工特征] --> B[PCA/SVD/UMAP]
 B --> C[树模型/ML模型/MLP]
 A --> D[TensorCSR]
 D --> C
@@ -328,7 +333,16 @@ D --> C
 
 </div>
 
---- 
+
+- 其他降维方法
+
+```
+list_fast_methods = ['PCA','umap','FA', 'NMF','RandProj','RandTrees'] # 'ICA',
+list_slow_methods = ['t-SNE','LLE','Modified LLE','Isomap','MDS','SE','LatDirAll','LTSA','Hessian LLE']
+```
+
+
+---
 
 ### Loss
 
@@ -403,3 +417,14 @@ This is one of the benefit of the loss function that is agnostic to linear trans
 
 
 训练时间无限，可无限融合
+
+---
+
+<div class="text-center m-50 py-3" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
+
+
+## EDA
+
+</div>
+
+
