@@ -254,7 +254,7 @@ module.exports = {
         },
       ],
       [
-        "vuepress-plugin-mermaidjs"
+        '@renovamen/vuepress-plugin-mermaid'
       ],
       ["flowchart"], // 支持流程图
       ["@vuepress/nprogress"], // 加载进度条
