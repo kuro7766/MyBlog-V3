@@ -38,6 +38,7 @@ jobs:
 
       - name: Add missing Dependencies
         run: |
+          npm install --save-dev vuepress-plugin-mermaidjs
           npm install markdown-it
           npm install markdown-it-katex
       - name: Build project
