@@ -255,7 +255,7 @@ module.exports = {
       ],
       [
         "vuepress-plugin-mermaidjs"
-      ]
+      ],
       ["flowchart"], // 支持流程图
       ["@vuepress/nprogress"], // 加载进度条
       ["reading-progress"], // 阅读进度条
