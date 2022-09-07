@@ -254,6 +254,9 @@ module.exports = {
         },
       ],
       ['vuepress-plugin-mermaidjs'],
+      [
+        "@renovamen/vuepress-plugin-mermaid"
+      ],
       ["@vuepress/nprogress"], // 加载进度条
       ["reading-progress"], // 阅读进度条
       ["vuepress-plugin-code-copy", true], //一键复制代码插件
