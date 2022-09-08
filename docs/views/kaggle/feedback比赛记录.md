@@ -22,6 +22,14 @@ tags:
 
 [Feedback Prize - Predicting Effective Arguments](https://www.kaggle.com/competitions/feedback-prize-effectiveness) 
 
+```mermaid
+graph LR
+A[人工特征] --> B[PCA/SVD/UMAP]
+B --> C[树模型/ML模型/MLP]
+A --> D[TensorCSR]
+D --> C
+```
+
 因为我手里卡不多，只能冻结一部分。
 
 ![](http://kuroweb.tk/picture/16591075317336250.jpg)
