@@ -38,6 +38,7 @@ jobs:
 
       - name: Add missing Dependencies
         run: |
+          npm install vuepress-plugin-flexsearch-pro -D
           npm install --save-dev @renovamen/vuepress-plugin-mermaid@next
           npm install --save-dev vuepress-plugin-mermaidjs
           npm install markdown-it
