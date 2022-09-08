@@ -31,7 +31,7 @@ tags:
 
 <style>
   h2:before {
-    border-left: 0px solid #3489fd;
+    opacity: 0;
 }
   </style>
   
