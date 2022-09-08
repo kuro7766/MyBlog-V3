@@ -11,7 +11,8 @@ export default {
 			m.initialize({
 				startOnLoad: true
 			});
-			m.init()
+			m.init();
+			console.log('mermaid initialized');
 		})
 	}
 }
