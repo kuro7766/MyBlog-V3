@@ -28,6 +28,13 @@ tags:
 
 # Kaggle-OpenProblem
 
+
+<style>
+  h2:before {
+    border-left: 0px solid #3489fd;
+}
+  </style>
+  
 ---
 
 <div class="text-center p-5 text-3xl my-5" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
