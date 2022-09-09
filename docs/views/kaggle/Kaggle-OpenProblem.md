@@ -34,7 +34,7 @@ tags:
     opacity: 0;
 }
   </style>
-  
+
 ---
 
 <div class="text-center p-5 text-3xl my-5" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
@@ -434,4 +434,24 @@ This is one of the benefit of the loss function that is agnostic to linear trans
 
 </div>
 
+---
 
+### 表格列名含义
+
+![](http://kuroweb.tk/picture/16626516781611642.jpg)
+
+输入 https://www.proteinatlas.org/ENSG00000121410 会自动重定向到 https://www.proteinatlas.org/ENSG00000121410-A1BG ，是否意味着两个是同一个基因？
+
+---
+
+![](http://kuroweb.tk/picture/16626523498945818.jpg)
+
+---
+
+bio bert , 
+
+
+<div class="overflow-auto h-100">
+
+<iframe src="https://wandb.ai/kuro7766/feedback-prize-deberta/reports/eval-loss-22-09-09-10-09-86---VmlldzoyNjA1MzE0?accessToken=xpykhqd51u6b8ov6liz307m4giljntvyo42meij0g72xdvuwsrlxe6ycj1099y7t" style="border:none;height:1024px;width:100%"></iframe>
+</div>
