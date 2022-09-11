@@ -496,7 +496,7 @@ multiom column列名全部为有序排列的，是否可以直接卷积
 
 ---
 
-<div class="w-60 my-20 mx-5 text-sm">
+<div class="w-60 my-15 mx-5 text-sm">
 
 |名称 | 说明|结果|
 |:--:|:--:|:--:|
@@ -551,3 +551,4 @@ I --> J
 ---
 
 
+fff

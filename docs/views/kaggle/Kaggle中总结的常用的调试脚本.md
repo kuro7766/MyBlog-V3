@@ -61,11 +61,11 @@ os.environ['https_proxy'] = "http://127.0.0.1:10809"
 
 
 
-## 常用函数
+## g-Config 常用函数
 
 ```python
 from __future__ import print_function
-import inspect, re,os
+import inspect, re,os,pickle
 
 from contextlib import contextmanager
 import time
@@ -197,8 +197,23 @@ def timed(label="NoLabel",enabled = True):
         if enabled:
             end = time.time()
             print(f"[{label}] used {end - start} s")
-        
 
+def write_obj(path, obj3):
+    obj3 = pickle.dumps(obj3)
+    with open(path, 'wb')as f:
+        f.write(obj3)
+
+def read_obj(path,default):
+    if not os.path.exists(path):
+        return default
+    f = open(path, "rb")
+    obj = default
+    try:
+        obj = pickle.load(f)
+    except:
+        obj = default
+    f.close()
+    return obj
     
 def iv(func,*args,**kwargs):
 #     print(f'{func.__name__}')
