@@ -40,7 +40,7 @@ tags:
 <div class="text-center p-5 text-3xl my-5" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
 目录
 </div>
-<toc columns="2"/>
+<toc columns="3"/>
 
 ---
 
@@ -427,6 +427,12 @@ This is one of the benefit of the loss function that is agnostic to linear trans
 
 ---
 
+### 参考信息
+
+[In my case my out of folds CV for cite is 0.8882 and for multi is 0.6601](https://www.kaggle.com/competitions/open-problems-multimodal/discussion/349591#1926845)，baseline&改进 训练出这个数大概就是对了
+
+---
+
 <div class="text-center m-50 py-3" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
 
 
@@ -444,14 +450,104 @@ This is one of the benefit of the loss function that is agnostic to linear trans
 
 ---
 
+https://www.proteinatlas.org/ENSG00000121410
+
 ![](http://kuroweb.tk/picture/16626523498945818.jpg)
+
 
 ---
 
-bio bert , 
+### Multiome训练结果
+
+multiome best score: **0.662**
 
 
-<div class="overflow-auto h-100">
+<iframe src="https://wandb.ai/kuro7766/openproblem/reports/Multiome-Train-22-09-10-10-09-18---VmlldzoyNjEwNTY2" style="border:none;height:1024px;width:1024px;transform: scale(0.75);transform-origin: 0 0;" ></iframe>
 
-<iframe src="https://wandb.ai/kuro7766/feedback-prize-deberta/reports/eval-loss-22-09-09-10-09-86---VmlldzoyNjA1MzE0?accessToken=xpykhqd51u6b8ov6liz307m4giljntvyo42meij0g72xdvuwsrlxe6ycj1099y7t" style="border:none;height:1024px;width:100%"></iframe>
+---
+
+### Citeseq训练结果
+
+Citeseq best score: **0.893**
+
+
+
+
+<iframe src="https://wandb.ai/kuro7766/openproblem/reports/Citeseq-Train-22-09-10---VmlldzoyNjEwNzY0"  style="border:none;height:1024px;width:1024px;transform: scale(0.75);transform-origin: 0 0;"></iframe>
+
+---
+
+```mermaid
+graph LR
+A(GL000194.1:114519-115365) --> B(GL000194.1)
+A --> C(114519-115365)
+B --> D("{name:GL000194.1,range:[114519-115365]}")
+C --> D
+```
+
+<img src="http://kuroweb.tk/picture/16627893294745148.jpg" class="h-75 mx-30"/>
+
+
+
+
+
+
+multiom column列名全部为有序排列的，是否可以直接卷积
+
+---
+
+<div class="w-60 my-20 mx-5 text-sm">
+
+|名称 | 说明|结果|
+|:--:|:--:|:--:|
+|v4-cnn| cnn 8~2048 channel | 0.6421 |
+|base | baseline batch 512 |0.6626|
+|v5-mlp |　baseline batch 16 | **0.666** |
+|v6-cnn | 8 kernel channel each layer , 8 layers | 0.647 |
+
+
 </div>
+
+<iframe src="https://wandb.ai/kuro7766/openproblem/reports/Multiome-MLP-v-s-CNN--VmlldzoyNjExNTY2"  class="left-80 -top-30 absolute" style="border:none;height:1024px;width:100%;transform: scale(0.75);transform-origin: left;">
+</iframe>
+---
+
+
+<div class="top-2 left-5 absolute">
+v4-cnn:
+</div>
+
+<div style="transform: scale(0.6);transform-origin: center;" class="absolute -top-45">
+
+```mermaid
+graph BT
+A("8 channel 1*3,MaxPooling1D(3),ReLU")
+B("16 channel 1*3,MaxPooling1D(3),ReLU")
+C("32 channel 1*3,MaxPooling1D(3),ReLU")
+D("64 channel 1*3,MaxPooling1D(3),ReLU")
+E("128 channel 1*3,MaxPooling1D(3),ReLU")
+F("256 channel 1*3,MaxPooling1D(3),ReLU")
+G("512 channel 1*3,MaxPooling1D(3),ReLU")
+H("1024 channel 1*3,MaxPooling1D(3),ReLU")
+I("2048 channel 1*3,MaxPooling1D(3),ReLU")
+J("2048 channel 1*3,MaxPooling1D(3),ReLU")
+A --> B
+B <--> C
+C --> D
+D --> E
+E --> F
+F --> G
+G --> H
+H --> I
+I --> J
+```
+
+</div>
+
+<iframe src="https://wandb.ai/kuro7766/openproblem/reports/Multiome-MLP-v-s-CNN--VmlldzoyNjExNTY2"  class="left-80 -top-30 absolute" style="border:none;height:1024px;width:100%;transform: scale(0.75);transform-origin: left;">
+</iframe>
+
+
+---
+
+
