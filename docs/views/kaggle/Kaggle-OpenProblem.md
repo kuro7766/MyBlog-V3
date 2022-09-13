@@ -662,38 +662,6 @@ torch sparse中没有reshape方法
 
 <div class="bg-slate-200	">
 
-### [🥈LB_T15| MSCI Multiome] CatBoostRegressor - LB 0.810 
-
-</div>
-
-- Solution for multiome
-
-- CatBoostRegressor
-
-- 2 PCAs , 1 for input , 1 for target
-
-<div class="top-20 right-35 w-110 absolute">
-
-![](http://kuroweb.tk/picture/16630585622779340.jpg)
-
-</div>
-
-- 优点
-
-<div class="w-60">
-
-输入输出都pca降维，节约模型训练需要的空间，减少模型训练难度
-
-</div>
-
-- 缺点
-
-pca反向转换有损，且难以解释
-
----
-
-<div class="bg-slate-200	">
-
 ### MSCI CITEseq Keras Quickstart + Dropout - LB 0.810
 
 </div>
@@ -719,18 +687,61 @@ important_cols is the set of all features whose name matches the name of a targe
 
 Finally ,we get **256 SVD features + 144 important features**
 
-> 根据[这篇讨论帖子](https://www.kaggle.com/competitions/open-problems-multimodal/discussion/349242)，important_cols 规则筛选的基因其实pearson相关系数低
+
+> 结合了PCA和人工筛选特征的优势
+
+<br/>
+
+> 但是根据[这篇讨论帖子](https://www.kaggle.com/competitions/open-problems-multimodal/discussion/349242)，important_cols 筛选的基因其实相关系数低
 
 
 </div>
 
 <div class="absolute w-80 right-10 top-0">
 
-![](https://www.kaggleusercontent.com/kf/105219293/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..X6rplB7PyZlbAg7Oo0SyaQ.IDBxOcLkqB-AYLeVGkKbPcrwC87dH62Lja7Kv-g6w81xiyOmIvlQV_bybr5xLjpbzHPON5mzv9FlQbQF_PHZ5Tu-QBGzgVxAk2DJvC1GZPT6L26q7wY4YQCZsL_3LAJSQwbBRLA8ERq3nYLEh_-fJG0C1k1YATwRgsgr99yVFtddUmPNjI4g9ESf-O6pxOuJ3voZZW4A6yEatjAWNHFJF0Hfqya-v3aMQPqYuJZQxB84xm989-tN2-DP3jJqpNx5fpCPXlsiX8zaNwqC5PMHAe00pdnOAkJfVHZmQUCh_FTnw-3kaa7xAfdv2BVr_zxS-ckOcJPCutF-PN-2wTBmC_S78jddkI_nI1K4-UHuP7L_9FzCsMnDjPSy6FnLFxDBpzOz7Rja9hKyaJCckTCLIM8Ur10l3V3OW9GJIZ8Wyw3HGOfjng3lhFxebIe85k-n5Amak2-COTwrhnJFdoh0P8yiBlVoNTOMc3zknwiIkjCbThW30dt_stX91cNEeMZhSYl3vkrFSxUNyCq-eGayR0GWWHNTI4-Zv4mHdNLTRnYu7CXrOpdLADt7gmY0gqzPvz1FnDH20UX3QS8ByrHYEmTEMnhEIwLZwvCdsxZVK7becAQjbfdo4APx8vTqHLucsW6ORA6ERrUTLbVF37gKFauI9KlugJyeTS3HdJwckAd9OHBuNKNXvzuuvldRyzba.CwqXY1RXZlo0rnkQPWKvjw/__results___files/__results___17_1.png)
+![](http://kuroweb.tk/picture/16630830383929542.jpg)
 
 </div>
 
+
+
 ---
+
+<div class="bg-slate-200	">
+
+### [🥈LB_T15| MSCI Multiome] CatBoostRegressor - LB 0.810 
+
+</div>
+
+- Solution for multiome
+
+- CatBoostRegressor
+
+- 2 PCAs , 1 for input , 1 for target
+
+<div class="top-20 right-35 w-110 absolute">
+
+![](http://kuroweb.tk/picture/16630585622779340.jpg)
+
+</div>
+
+- 优点
+
+<div class="w-60">
+
+输入输出都用pca降维，节约模型训练需要的空间，减少模型训练难度
+
+</div>
+
+- 缺点
+
+pca反向转换有损，且结果难以解释
+
+
+
+---
+
+<div class="overflow-auto h-150">
 
 <div class="bg-slate-200">
 
@@ -738,9 +749,11 @@ Finally ,we get **256 SVD features + 144 important features**
 
 </div>
 
-- TruncatedSVD is used to project raw features to 512 dimensional space.
+<div class="">
 
-- Raw data is loaded to memory as sparse matrices and is lazily uncomressed and concatenated with cell_id features in the MSCIDatasetSparse class.
+- **TruncatedSVD** is used to project raw features to 512 dimensional space.
+
+- Raw data is **loaded to memory as sparse matrices** and is lazily uncomressed and concatenated with cell_id features in the MSCIDatasetSparse class.
 
 - Optuna Hyperparameter Optimization
 
@@ -748,11 +761,16 @@ Finally ,we get **256 SVD features + 144 important features**
 
 - MLP
 
-<div class="w-120 absolute right-20 bottom-0">
+</div>
+
+<div class="w-200 -z-50 mb-20">
 
 ![](https://images2.imgbox.com/be/27/9vy3PmRH_o.png)
 
 </div>
+
+</div>
+
 
 ---
 
@@ -764,7 +782,7 @@ Finally ,we get **256 SVD features + 144 important features**
 
 - Solution for multiome/citeseq
 
-- Pytorch Sparse Tensor
+- 使用Pytorch Sparse Tensor ， 无内存压力，无需预先PCA降维
 
 - MLP
 
@@ -779,21 +797,15 @@ F --> G["ReLU"]
 G --> H["Linear(23418)"]
 ```
 
----
+- 模型简单有效
 
-<div class="bg-slate-200">
+- 缺点
 
-### [LB:0.805]CITEseq TabNet baseline - LB 0.805
-
-</div>
-
-- Solution for citeseq
-
-- TabNetRegressor
-
-- 基于 MSCI CITEseq Keras Quickstart
+sparse tensor只能为二维，[batch,feature]，仅适用于mlp。想使用其他方法，必须转换为dense tensor
 
 ---
+
+
 
 <div class="bg-slate-200">
 
@@ -809,6 +821,99 @@ G --> H["Linear(23418)"]
 
 - Random KFold
 
-- KernelRidge Regression
+- **KernelRidge/Tabnet Regression**
 
 - pca inverse transform
+
+<!-- tabnet -->
+
+---
+
+<div class="bg-slate-200">
+
+### MSCI CITEseq Quickstart - LB 0.803
+
+</div>
+
+Insights: 
+
+The training input has shape 70988***22050** (6.3 GByte).
+
+The training labels have shape 70988***140**.
+
+The test input has shape 48663***22050** (4.3 GByte).
+
+
+<br/>
+
+- Dimensionality reduction .  PCA->512 features
+
+- Domain knowledge: The column names of the data reveal which features are most important.
+
+- We fit 140 LightGBM models to the data (because there are 140 targets).
+
+- 3-fold GroupKFold
+
+> 训练了140个学习器，因为单个模型不能适配所有任务；但对于multiome任务，训练2w个学习器不可行
+
+---
+
+<div class="bg-slate-200">
+
+### CITEseq - RNA to Protein Encoder-Decoder NN - LB 0.798
+
+</div>
+
+- PCA 降维
+
+- Encoder Decoder NN
+
+- AdamW optimizer with Cosine scheduler
+
+<div class="absolute bottom-30">
+
+可改进
+
+> test rnn or cnn <br/>
+try adding attention mechanism <br/>
+change structure to adjust for new features
+
+
+</div>
+
+<div class="w-140 absolute right-0 top-30">
+
+![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F6537187%2F1a17ab66143625efff11e8a063e1dac1%2Fenc_dec2.PNG?generation=1662083054477703&alt=media)
+
+</div>
+
+
+<!-- EpiScanpy  -->
+
+
+---
+
+<div class="bg-slate-200">
+
+### Summary
+
+</div>
+
+
+- 特征
+
+- 降维
+
+input pca降维，output pca降维
+
+- 模型
+
+Catboost、LGBM、Tabnet、Ridge、MLP、Encoder Decoder NN
+
+- cv
+
+group kfold on donor
+
+- 调参
+
+keras tuner , optuna
