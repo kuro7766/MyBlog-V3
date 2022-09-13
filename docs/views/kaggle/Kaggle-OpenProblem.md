@@ -40,7 +40,10 @@ tags:
 <div class="text-center p-5 text-3xl my-5" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
 目录
 </div>
-<toc columns="3"/>
+
+<div class="overflow-auto h-90 mb-5">
+<toc columns="2"/>
+</div>
 
 ---
 
@@ -431,6 +434,56 @@ This is one of the benefit of the loss function that is agnostic to linear trans
 
 [In my case my out of folds CV for cite is 0.8882 and for multi is 0.6601](https://www.kaggle.com/competitions/open-problems-multimodal/discussion/349591#1926845)，baseline&改进 训练出这个数大概就是对了
 
+
+
+---
+
+<div class="text-center m-50 py-3" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
+
+## 2021年冠军方案
+
+</div>
+
+---
+
+### AE-JAE
+
+<img src="https://github.com/openproblems-bio/neurips2021_multimodal_topmethods/raw/main/src/joint_embedding/methods/jae/model_architecture.png" class="h-75 mx-20 my-10"/>
+
+
+<div class="w-75 top-20 right-30 absolute">
+每种模式首先会被SVD转换并连接到一起（表示为x）。与标准AE的主要区别是，我们纳入了细胞注释的信息（例如，细胞标签、细胞周期得分和细胞批次）来约束潜在特征的结构。我们希望一些潜在特征（c）预测细胞类型信息，一些特征预测细胞周期得分。值得注意的是，对于特征（b），我们希望它尽可能随机地预测批次标签，以潜在地消除批次效应。
+
+在预训练阶段，JAE是用细胞注释信息（细胞类型、细胞周期阶段得分）可用的探索数据进行训练。在没有细胞注释信息的测试阶段，我们只用较小的学习率（微调）来最小化自动编码器的重建损失。
+
+</div>
+
+---
+
+### AE-CLUE
+
+<img src="https://github.com/openproblems-bio/neurips2021_multimodal_topmethods/raw/main/src/match_modality/methods/clue/clue_architecture.jpg" class="h-75 mx-20 my-10"/>
+
+<div class="w-75 top-30 right-30 absolute">
+它采用变异自动编码器将来自不同模式的细胞投射到一个统一的低维嵌入空间，在那里可以进行模式匹配。特别是，我们将每种模式的数据建模为由完整细胞嵌入的特定模式子空间产生。通过交叉编码器矩阵，CLUE将每个模态中的细胞投射到所有特定模态的子空间中，然后将这些子空间连接起来，建立一个全面的嵌入，使该模型能够捕捉到共享的和特定模态的信息。
+</div>
+
+
+---
+
+### Novel team
+
+<div class="flex flex-row">
+<img src="https://github.com/openproblems-bio/neurips2021_multimodal_topmethods/raw/main/src/match_modality/methods/novel/novel_architecture1.png" class="h-60 mx-5 my-10"/>
+
+<img src="https://github.com/openproblems-bio/neurips2021_multimodal_topmethods/raw/main/src/match_modality/methods/novel/novel_architecture2.png" class="h-60 my-auto"/>
+</div>
+
+<div class="w-200 ">
+以与CLIP模型相同的方式学习。所有模式的编码器都是完全连接的。其中权重是样本嵌入之间的余弦相似度。
+</div>
+
+
 ---
 
 <div class="text-center m-50 py-3" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
@@ -442,27 +495,34 @@ This is one of the benefit of the loss function that is agnostic to linear trans
 
 ---
 
-### 表格列名含义
+### 表格列名
+
+<div class="w-150">
 
 ![](http://kuroweb.tk/picture/16626516781611642.jpg)
 
-输入 https://www.proteinatlas.org/ENSG00000121410 会自动重定向到 https://www.proteinatlas.org/ENSG00000121410-A1BG ，是否意味着两个是同一个基因？
+</div>
+
+<div class="w-80 left-20 top-70 absolute">
+
+![](http://kuroweb.tk/picture/16629471122491956.jpg)
+
+</div>
+
+<div class="w-120 absolute right-10 top-70">
+
+<!-- 输入 https://www.proteinatlas.org/ENSG00000121410 会自动重定向到 https://www.proteinatlas.org/ENSG00000121410-A1BG ，两个应该是同一个基因。 -->
+
+ DNA->RNA(1) <br/> RNA(2)->Protein <br/>RNA(1)和RNA(2)之间有特征重叠，但是细胞没有交集
+
+</div>
+
 
 ---
 
 https://www.proteinatlas.org/ENSG00000121410
 
 ![](http://kuroweb.tk/picture/16626523498945818.jpg)
-
-
----
-
-### Multiome训练结果
-
-multiome best score: **0.662**
-
-
-<iframe src="https://wandb.ai/kuro7766/openproblem/reports/Multiome-Train-22-09-10-10-09-18---VmlldzoyNjEwNTY2" style="border:none;height:1024px;width:1024px;transform: scale(0.75);transform-origin: 0 0;" ></iframe>
 
 ---
 
@@ -473,9 +533,22 @@ Citeseq best score: **0.893**
 
 
 
-<iframe src="https://wandb.ai/kuro7766/openproblem/reports/Citeseq-Train-22-09-10---VmlldzoyNjEwNzY0"  style="border:none;height:1024px;width:1024px;transform: scale(0.75);transform-origin: 0 0;"></iframe>
+<iframe src="https://wandb.ai/kuro7766/openproblem/reports/Citeseq-Train-22-09-10---VmlldzoyNjEwNzY0"  style="border:none;height:1024px;width:1024px;" class=" transform origin-top-left scale-75"></iframe>
 
 ---
+
+### Multiome训练结果
+
+multiome best score: **0.662**
+
+
+<iframe src="https://wandb.ai/kuro7766/openproblem/reports/Multiome-Train-22-09-10-10-09-18---VmlldzoyNjEwNTY2" style="border:none;height:1024px;width:1024px;" class=" transform origin-top-left scale-75" ></iframe>
+
+
+
+---
+
+### Multiome列名顺序
 
 ```mermaid
 graph LR
@@ -485,31 +558,18 @@ B --> D("{name:GL000194.1,range:[114519-115365]}")
 C --> D
 ```
 
-<img src="http://kuroweb.tk/picture/16627893294745148.jpg" class="h-75 mx-30"/>
+<img src="http://kuroweb.tk/picture/16627893294745148.jpg" class="h-75 absolute -right-30 top-70"/>
 
+<div class="absolute left-5 top-80 w-150">
 
-
-
-
-
-multiom column列名全部为有序排列的，是否可以直接卷积
-
----
-
-<div class="w-60 my-15 mx-5 text-sm">
-
-|名称 | 说明|结果|
-|:--:|:--:|:--:|
-|v4-cnn| cnn 8~2048 channel | 0.6421 |
-|base | baseline batch 512 |0.6626|
-|v5-mlp |　baseline batch 16 | **0.666** |
-|v6-cnn | 8 kernel channel each layer , 8 layers | 0.647 |
-
+![](http://kuroweb.tk/picture/16629576764868906.jpg)
 
 </div>
 
-<iframe src="https://wandb.ai/kuro7766/openproblem/reports/Multiome-MLP-v-s-CNN--VmlldzoyNjExNTY2"  class="left-80 -top-30 absolute" style="border:none;height:1024px;width:100%;transform: scale(0.75);transform-origin: left;">
-</iframe>
+multiom column列名全部为有序排列的，是否可以直接卷积?
+
+https://lanceotron.molbiol.ox.ac.uk/projects/peak_search_basic/6243
+
 ---
 
 
@@ -517,7 +577,7 @@ multiom column列名全部为有序排列的，是否可以直接卷积
 v4-cnn:
 </div>
 
-<div style="transform: scale(0.6);transform-origin: center;" class="absolute -top-45">
+<div  class="absolute -top-45 transform origin-center scale-60">
 
 ```mermaid
 graph BT
@@ -544,11 +604,211 @@ I --> J
 
 </div>
 
-<iframe src="https://wandb.ai/kuro7766/openproblem/reports/Multiome-MLP-v-s-CNN--VmlldzoyNjExNTY2"  class="left-80 -top-30 absolute" style="border:none;height:1024px;width:100%;transform: scale(0.75);transform-origin: left;">
-</iframe>
+<iframe src="https://wandb.ai/kuro7766/openproblem/reports/Multiome-MLP-v-s-CNN--VmlldzoyNjExNTY2"  class="left-80 -top-30 absolute transform origin-left scale-75" style="border:none;height:1024px;width:100%;"></iframe>
 
+---
+
+### CNN Results
+
+
+<div class="w-60 my-12 mx-5 text-sm">
+
+|名称 | 说明|结果|
+|:--:|:--:|:--:|
+|v4-cnn| cnn 8~2048 channel | 0.6421 |
+|base | baseline batch 512 |0.6626|
+|v5-mlp |　baseline batch 16 | **0.666** |
+|v6-cnn | 8 kernel channel each layer , 8 layers | 0.647 |
+
+<br/>
+
+- 问题
+
+torch sparse中没有reshape方法
+
+</div>
+
+
+
+<iframe src="https://wandb.ai/kuro7766/openproblem/reports/Multiome-MLP-v-s-CNN--VmlldzoyNjExNTY2"  class="left-80 -top-30 absolute transform origin-left scale-75" style="border:none;height:1024px;width:100%;"></iframe>
+
+---
+
+<div class="w-60 my-5 mx-5 text-sm">
+
+|名称 | 说明|结果|
+|:--:|:--:|:--:|
+|base | baseline batch 512 | **0.6626** |
+|v6-cnn | 8 kernel channel each layer , 8 layers | 0.647 |
+|v7-cnn |　16~32 channels | 0.65 |
+|v8-cnn| 128 channel | 0.6508 |
+|v10-cnn | BN,residual connection,48 channels | **0.6544** |
+
+
+</div>
+
+<iframe src="https://wandb.ai/kuro7766/openproblem/reports/CNNs--VmlldzoyNjE3NDgw" class="left-80 -top-30 absolute transform origin-left scale-75" style="border:none;height:1024px;width:100%"></iframe>
 
 ---
 
 
-fff
+<div class="text-center m-50 py-3" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
+
+## 现有方案一览
+
+</div>
+
+---
+
+<div class="bg-slate-200	">
+
+### [🥈LB_T15| MSCI Multiome] CatBoostRegressor - LB 0.810 
+
+</div>
+
+- Solution for multiome
+
+- CatBoostRegressor
+
+- 2 PCAs , 1 for input , 1 for target
+
+<div class="top-20 right-35 w-110 absolute">
+
+![](http://kuroweb.tk/picture/16630585622779340.jpg)
+
+</div>
+
+- 优点
+
+<div class="w-60">
+
+输入输出都pca降维，节约模型训练需要的空间，减少模型训练难度
+
+</div>
+
+- 缺点
+
+pca反向转换有损，且难以解释
+
+---
+
+<div class="bg-slate-200	">
+
+### MSCI CITEseq Keras Quickstart + Dropout - LB 0.810
+
+</div>
+
+
+- Solution for citeseq
+
+- Dimensionality reduction: To reduce the size of the 10.6 GByte input data, we project the 22050 features to a space with only **64 dimensions by applying a truncated SVD**. To these 64 dimensions, we add **144 features whose names shows their importance**.
+- The model: The model is a sequential dense network with **four hidden layers**.
+- The loss function: Use pearson loss directly
+- Hyperparameter tuning with **KerasTuner**: We tune the hyperparameters with KerasTuner BayesianOptimization.
+- Cross-validation: Submitting unvalidated models and **relying only on the public leaderboard is bad practice**. The model in this notebook is fully cross-validated with a **3-fold GroupKFold**.
+
+---
+
+<div class="w-120">
+
+- Define two sets of features:
+
+constant_cols is the set of all features which are constant in the train or test datset. 
+
+important_cols is the set of all features whose name matches the name of a target protein. If a gene is named 'ENSG00000114013_CD86', it should be related to a protein named 'CD86'.They don't undergo dimensionality reduction.
+
+Finally ,we get **256 SVD features + 144 important features**
+
+> 根据[这篇讨论帖子](https://www.kaggle.com/competitions/open-problems-multimodal/discussion/349242)，important_cols 规则筛选的基因其实pearson相关系数低
+
+
+</div>
+
+<div class="absolute w-80 right-10 top-0">
+
+![](https://www.kaggleusercontent.com/kf/105219293/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..X6rplB7PyZlbAg7Oo0SyaQ.IDBxOcLkqB-AYLeVGkKbPcrwC87dH62Lja7Kv-g6w81xiyOmIvlQV_bybr5xLjpbzHPON5mzv9FlQbQF_PHZ5Tu-QBGzgVxAk2DJvC1GZPT6L26q7wY4YQCZsL_3LAJSQwbBRLA8ERq3nYLEh_-fJG0C1k1YATwRgsgr99yVFtddUmPNjI4g9ESf-O6pxOuJ3voZZW4A6yEatjAWNHFJF0Hfqya-v3aMQPqYuJZQxB84xm989-tN2-DP3jJqpNx5fpCPXlsiX8zaNwqC5PMHAe00pdnOAkJfVHZmQUCh_FTnw-3kaa7xAfdv2BVr_zxS-ckOcJPCutF-PN-2wTBmC_S78jddkI_nI1K4-UHuP7L_9FzCsMnDjPSy6FnLFxDBpzOz7Rja9hKyaJCckTCLIM8Ur10l3V3OW9GJIZ8Wyw3HGOfjng3lhFxebIe85k-n5Amak2-COTwrhnJFdoh0P8yiBlVoNTOMc3zknwiIkjCbThW30dt_stX91cNEeMZhSYl3vkrFSxUNyCq-eGayR0GWWHNTI4-Zv4mHdNLTRnYu7CXrOpdLADt7gmY0gqzPvz1FnDH20UX3QS8ByrHYEmTEMnhEIwLZwvCdsxZVK7becAQjbfdo4APx8vTqHLucsW6ORA6ERrUTLbVF37gKFauI9KlugJyeTS3HdJwckAd9OHBuNKNXvzuuvldRyzba.CwqXY1RXZlo0rnkQPWKvjw/__results___files/__results___17_1.png)
+
+</div>
+
+---
+
+<div class="bg-slate-200">
+
+### 🔬[Multi:.67;CITE:.89] PyTorch Swiss Army Knife🔬 - LB 0.809
+
+</div>
+
+- TruncatedSVD is used to project raw features to 512 dimensional space.
+
+- Raw data is loaded to memory as sparse matrices and is lazily uncomressed and concatenated with cell_id features in the MSCIDatasetSparse class.
+
+- Optuna Hyperparameter Optimization
+
+- Random kfold split
+
+- MLP
+
+<div class="w-120 absolute right-20 bottom-0">
+
+![](https://images2.imgbox.com/be/27/9vy3PmRH_o.png)
+
+</div>
+
+---
+
+<div class="bg-slate-200">
+
+### MSCI Multiome Torch Quickstart Submission - LB 0.808
+
+</div>
+
+- Solution for multiome/citeseq
+
+- Pytorch Sparse Tensor
+
+- MLP
+
+```mermaid
+graph LR
+A["Input(228942)"] --> B["Linear(128)"]
+B --> C["ReLU"]
+C --> D["Linear(128)"]
+D --> E["ReLU"]
+E --> F["Linear(128)"]
+F --> G["ReLU"]
+G --> H["Linear(23418)"]
+```
+
+---
+
+<div class="bg-slate-200">
+
+### [LB:0.805]CITEseq TabNet baseline - LB 0.805
+
+</div>
+
+- Solution for citeseq
+
+- TabNetRegressor
+
+- 基于 MSCI CITEseq Keras Quickstart
+
+---
+
+<div class="bg-slate-200">
+
+### Fork of [MSCI Multiome] RandomSampling | Sp 6b182b - LB 0.804
+
+
+
+</div>
+
+- Solution for Multiome
+
+- Pearson loss
+
+- Random KFold
+
+- KernelRidge Regression
+
+- pca inverse transform
