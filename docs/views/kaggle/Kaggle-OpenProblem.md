@@ -47,7 +47,7 @@ tags:
 
 ---
 
-<div class="text-center m-50 py-3" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
+<div class="text-center m-50 py-3 rounded-8xl" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
 
 ## 数据集
 
@@ -187,7 +187,7 @@ CD含义: Cluster of Differentiation 分化簇
 
 [Cluster map绘制](https://www.kaggle.com/code/alexandervc/mmscel-eda-bioinfo?scriptVersionId=103869738&cellId=17)
 
-<img src="https://www.kaggleusercontent.com/kf/103869738/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..Qxo2vqnFj36tKku3iGDUjg.cqBRpguWt4AXnnHtrdPBdtsEIBlcE50_H6tSMxGHzM-mc2fibz1sYn5dKLOfFQ1D31e1DH4-eKai0Vie381hCFKhfKh8yhKflidslk2dGTaXBkuIAt_4aoCSyUq5mO4zPh5llG0b-SiK9PtiXcXfccH3ZXV-Jd01QJZwxasd4oS5QHCsk4hS9b8d41oeHY_jNNID1wh2rKtrRhdE9rXBFaLf4-O52DG4VEb9bERAHmPYubGGJdQUhxhXerFKCqtey5jvByOvmguIwrVrGsVKoIPWu9GxPGlydYs86MH4XjRPOLF6Sgbg2Ka75bhn2pZR6nyRjVskIY2GbkuKvVBE2Q0wRjn_D06nU0RHeGSXpiNgFvzM2v_rENhOkaUJvSLunaoyE8nd4DFeuaU64rTG2ZoEqCer92CkuMIodWvga7-wEAzudUxaH5DlfT4glLRTyGRh3w7urfZYB_OzSHmgX6UMLIZobC-t70Km2peo9LAEI66fKpv1s5TFQgvSnmeMy2PGP3uj1Nxr67pUnry-Ki0ODi3iO3hBIkw_mOXf0YGKNgauZ426WST2ZtHFSmuJ72lcLNgePqGCpBdmvdvSe8MA0vnvHx7Zazmt5W9xJVElkLhocdcvpTU-HUygZbeFm0oENoHiGw_mkNqt15wFQAmaBjRhETgT9rKelvnUgng.eha20wzVe1ANIB8MHdtqXg/__results___files/__results___16_2.png" class="h-100 mx-7"/>
+<img src="http://kuroweb.tk/picture/16631158005946630.jpg" class="h-100 mx-7"/>
 
 ---
 
@@ -246,7 +246,7 @@ CD含义: Cluster of Differentiation 分化簇
 
 
 
-<div class="text-center m-50 py-3" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
+<div class="text-center m-50 py-3 rounded-8xl" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
 
 ## 模型&提交相关
 
@@ -438,7 +438,7 @@ This is one of the benefit of the loss function that is agnostic to linear trans
 
 ---
 
-<div class="text-center m-50 py-3" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
+<div class="text-center m-50 py-3 rounded-8xl" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
 
 ## 2021年冠军方案
 
@@ -486,10 +486,10 @@ This is one of the benefit of the loss function that is agnostic to linear trans
 
 ---
 
-<div class="text-center m-50 py-3" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
+<div class="text-center m-50 py-3 rounded-8xl" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
 
 
-## EDA
+## MY EDA
 
 </div>
 
@@ -652,28 +652,43 @@ torch sparse中没有reshape方法
 ---
 
 
-<div class="text-center m-50 py-3" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
+<div class="text-center m-50 py-3 rounded-8xl" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
+<!-- <div class="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ..."> -->
 
-## 现有方案一览
+## 公开的NoteBook
 
 </div>
 
 ---
 
 <div class="bg-slate-200	">
+<!-- <div class="bg-gradient-to-r from-slate-300 rounded pl-1 ..."> -->
+<!-- <div class="bg-gradient-to-r from-red-500  to-blue-300 rounded ..."> -->
+<!-- <button type="button" class="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ..."> -->
 
 ### MSCI CITEseq Keras Quickstart + Dropout - LB 0.810
 
 </div>
+<!-- </div> -->
 
 
 - Solution for citeseq
 
 - Dimensionality reduction: To reduce the size of the 10.6 GByte input data, we project the 22050 features to a space with only **64 dimensions by applying a truncated SVD**. To these 64 dimensions, we add **144 features whose names shows their importance**.
-- The model: The model is a sequential dense network with **four hidden layers**.
-- The loss function: Use pearson loss directly
+
+
+> 结合了PCA和人工筛选特征的优势
+
+<br/>
+
+- The model is a sequential dense network with **four hidden layers**.
+- Use pearson loss directly
 - Hyperparameter tuning with **KerasTuner**: We tune the hyperparameters with KerasTuner BayesianOptimization.
 - Cross-validation: Submitting unvalidated models and **relying only on the public leaderboard is bad practice**. The model in this notebook is fully cross-validated with a **3-fold GroupKFold**.
+
+
+> 泛化能力、模拟private set真实场景
+
 
 ---
 
@@ -681,14 +696,19 @@ torch sparse中没有reshape方法
 
 - Define two sets of features:
 
+<div class="rounded-3xl bg-blue-100 p-3	mb-5">
+
 constant_cols is the set of all features which are constant in the train or test datset. 
 
+
 important_cols is the set of all features whose name matches the name of a target protein. If a gene is named 'ENSG00000114013_CD86', it should be related to a protein named 'CD86'.They don't undergo dimensionality reduction.
+
+</div>
+
 
 Finally ,we get **256 SVD features + 144 important features**
 
 
-> 结合了PCA和人工筛选特征的优势
 
 <br/>
 
@@ -703,6 +723,7 @@ Finally ,we get **256 SVD features + 144 important features**
 
 </div>
 
+<arrow x1="250" y1="270" x2="250" y2="330" color="#564" width="1" arrowSize="1" ></arrow>
 
 
 ---
@@ -759,7 +780,7 @@ pca反向转换有损，且结果难以解释
 
 - Random kfold split
 
-- MLP
+- MLP Model
 
 </div>
 
@@ -782,7 +803,11 @@ pca反向转换有损，且结果难以解释
 
 - Solution for multiome/citeseq
 
-- 使用Pytorch Sparse Tensor ， 无内存压力，无需预先PCA降维
+- 使用Pytorch Sparse Tensor 
+
+> 大幅减少内存压力，无需预先PCA降维
+
+<br/>
 
 - MLP
 
@@ -835,30 +860,28 @@ sparse tensor只能为二维，[batch,feature]，仅适用于mlp。想使用其�
 
 </div>
 
-Insights: 
-
-The training input has shape 70988***22050** (6.3 GByte).
-
-The training labels have shape 70988***140**.
-
-The test input has shape 48663***22050** (4.3 GByte).
-
 
 <br/>
+
+<div class="">
 
 - Dimensionality reduction .  PCA->512 features
 
 - Domain knowledge: The column names of the data reveal which features are most important.
 
-- We fit 140 LightGBM models to the data (because there are 140 targets).
-
-- 3-fold GroupKFold
+- We fit **140 LightGBM** models to the data (because there are 140 targets).
 
 > 训练了140个学习器，因为单个模型不能适配所有任务；但对于multiome任务，训练2w个学习器不可行
 
+<br/>
+
+- 3-fold GroupKFold
+
+</div>
+
 ---
 
-<div class="bg-slate-200">
+<div class="bg-slate-200 mb-20">
 
 ### CITEseq - RNA to Protein Encoder-Decoder NN - LB 0.798
 
@@ -874,10 +897,9 @@ The test input has shape 48663***22050** (4.3 GByte).
 
 可改进
 
-> test rnn or cnn <br/>
-try adding attention mechanism <br/>
-change structure to adjust for new features
-
+> 尝试 rnn 、 cnn <br/>
+尝试 attention mechanism <br/>
+更改网络结构、添加新的特征
 
 </div>
 
@@ -908,12 +930,242 @@ input pca降维，output pca降维
 
 - 模型
 
-Catboost、LGBM、Tabnet、Ridge、MLP、Encoder Decoder NN
+Catboost、LGBM、Tabnet、Ridge、MLP、Encoder Decoder NN ; Tricks
 
 - cv
 
-group kfold on donor
+Group kfold on donor
 
 - 调参
 
 keras tuner , optuna
+
+---
+
+<div class="text-center m-50 py-3 rounded-8xl" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
+
+## 公开的EDA
+
+</div>
+
+---
+
+<div class="bg-slate-200">
+
+### 预处理 normalize Y to 1e6 (Multiome)
+
+</div>
+
+<div class="absolute right-10">
+
+![](http://kuroweb.tk/picture/16632265638963396.jpg)
+
+</div>
+
+
+<div class="absolute w-120 right-110 bottom-10">
+
+![](http://kuroweb.tk/picture/16632271282763608.jpg)
+
+</div>
+
+1) calculate predictions Y 
+
+2) calculate normalizer Z = sum(exp(Y)) 
+
+3) renorm: Y_i -> Y_i + (log((1e6+22050 )/Z))
+
+
+---
+
+<div class="bg-slate-200">
+
+### Tips on Dimensionality Reduction
+
+</div>
+
+<br/>
+
+- Handle Zeros
+
+数据集包含是大量的零。甚至还有整个列仅由零组成
+
+Here's a tip on how to remove them.
+```
+all_zero_columns = (X == 0).all(axis=0)
+X = X[:,~all_zero_columns]
+```
+
+<br/>
+
+- Column Selection
+
+选择一些重要的列
+
+```
+X[:,columns_to_use:]
+```
+
+
+---
+
+- PCA
+
+主成分分析(PCA)是一种线性降维，利用数据的奇异值分解将其投射到一个较低的维度空间。
+
+
+Example code:
+```
+from sklearn.decomposition import PCA
+pca = PCA(n_components=n)
+X = pca.fit_transform(X)
+```
+
+<div class="absolute -right-80 bottom-55 w-200">
+
+![](http://kuroweb.tk/picture/16632279768080712.jpg)
+
+</div>
+
+<br/>
+<br/>
+
+- ICA
+
+独立的组件分析（ICA）发现哪些向量是数据的独立子元素。换句话说，PCA有助于压缩数据，ICA有助于分离数据。
+
+
+Example code:
+
+```
+from sklearn.decomposition import FastICA
+ica = FastICA(n_components=n)
+X = ica.fit_transform(X)
+```
+
+
+---
+
+- t-SNE
+
+
+T-SNE 是一种无监督的非线性降维和数据可视化分析技术，可以作为主成分分析的另一种替代方法.
+
+
+
+Example code:
+```
+from sklearn.manifold import TSNE
+tsne = TSNE(n_components=n)
+X = tsne.fit_transform(X)
+```
+
+<div class="absolute right-80 bottom-0 w-100">
+
+
+![](http://kuroweb.tk/picture/16632281716845942.jpg)
+
+</div>
+
+
+---
+
+- Ivis
+
+IVIS有生物分子任务应用的前景。它使用Siamese神经网络来创建嵌入并降低尺寸的数量。预测它可能在此挑战中有良好的应用。
+
+
+
+Example code:
+```
+from ivis import Ivis
+model = Ivis(embedding_dims=dims, k=k, batch_size=bs, epochs=ep, n_trees=n_trees)
+X = model.fit_transform(X)
+```
+
+
+<div class="absolute right-80 bottom-10 w-120">
+
+![](http://kuroweb.tk/picture/16632287325091332.jpg)
+
+</div>
+
+
+---
+
+<div class="bg-slate-200">
+
+
+### 单细胞数据分析软件包
+
+</div>
+
+
+几个用于单细胞数据分析的Python软件包:
+
+- [scanpy](https://scanpy.readthedocs.io/en/stable/)
+
+- [scvi-tools](https://docs.scvi-tools.org/en/latest/index.html)
+
+- [scprep](https://scprep.readthedocs.io/en/stable/reference.html)
+
+- [muon](https://muon.readthedocs.io/en/latest/index.html)
+
+
+---
+
+<!-- https://www.kaggle.com/code/fabiencrom/msci-correlations-eda-multiome -->
+
+
+<div class="bg-slate-200">
+
+
+### MSCI Correlations EDA Multiome
+
+</div>
+
+<br/>
+
+
+- Quick view
+
+<!-- 
+<div class="rounded-full bg-blue-100 px-6 py-1	mb-5">
+
+
+</div> -->
+
+the individual correlations between a single target and a single input are rather **small**
+
+**10 Multiome** inputs constantly equal to zero; **560 targets** constantly equal to zeros. 
+
+
+
+- Examples(一些重要的基因) : 
+
+	- For example `chr1:47180897-47181792` seem to be a enhancer for 35% of targets, and an inhibitor for 11% of them. 
+	
+	- On the contrary, `chr2:28557270-28558187` seem to be an inhibitor for 30% of targets and an enhancer for 11% of them. 
+
+
+
+
+
+---
+
+- Sub groups
+
+<table style="table-layout: fixed; border-spacing: 5em;" >
+  <tr>
+          <td class="h-100">
+          <div class="mx-2 rounded-3xl bg-red-100 py-24 px-8">
+These approximate ratios of  30% / 10% of negative/positive correlations appear surprisingly often. 
+</div>
+          </td>
+          <td class="h-100">
+                    <div class="mx-2 rounded-3xl bg-blue-100 px-10 py-20">
+Possibly there are two subgroups of highly correlated targets representing about 30% and 10% of all targets and that have a very similar response to the same inputs.
+</div>
+    </td>
+  </tr>
+</table>
