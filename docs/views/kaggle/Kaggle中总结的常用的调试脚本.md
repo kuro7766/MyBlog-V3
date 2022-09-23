@@ -349,3 +349,18 @@ def set_seed(seed = 42):
     print('> SEEDING DONE')
     
 ```
+
+## 调参用
+
+```
+def param_picker(dict_of_list):
+    params = {}
+    import random
+    for key in dict_of_list.keys():
+        lst = dict_of_list[key]
+        elem = random.choice(lst)
+        params[key] = elem
+    return params
+{**param_picker({'a':[1,2,3],'b':[4,5,6]}),**{'ext_dict':10}}
+```
+
