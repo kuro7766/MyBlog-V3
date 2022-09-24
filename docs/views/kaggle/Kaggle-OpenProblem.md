@@ -28,12 +28,12 @@ tags:
 
 # Kaggle-OpenProblem
 
-
+<!-- 
 <style>
   h2:before {
     opacity: 0;
 }
-  </style>
+  </style> -->
 
 ---
 
