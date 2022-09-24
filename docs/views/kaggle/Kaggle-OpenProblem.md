@@ -41,22 +41,21 @@ tags:
 目录
 </div>
 
-<div class="overflow-auto h-90 mb-5">
+<div class="overflow-auto h-100 mb-5">
 <toc columns="2"/>
 </div>
 
+
 ---
 
-<div class="text-center m-50 py-3 rounded-8xl" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
 
 ## 数据集
 
-</div>
 
 
 ---
 
-**数据集解释**
+### 数据集解释
 
 
 - evaluation_ids.csv
@@ -246,11 +245,9 @@ CD含义: Cluster of Differentiation 分化簇
 
 
 
-<div class="text-center m-50 py-3 rounded-8xl" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
 
 ## 模型&提交相关
 
-</div>
 
 ---
 
@@ -438,11 +435,13 @@ This is one of the benefit of the loss function that is agnostic to linear trans
 
 ---
 
-<div class="text-center m-50 py-3 rounded-8xl" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
+<!-- <div class="text-center m-50 py-3 rounded-8xl" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
+
+
+
+</div> -->
 
 ## 2021年冠军方案
-
-</div>
 
 ---
 
@@ -486,12 +485,9 @@ This is one of the benefit of the loss function that is agnostic to linear trans
 
 ---
 
-<div class="text-center m-50 py-3 rounded-8xl" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
-
 
 ## MY EDA
 
-</div>
 
 ---
 
@@ -630,7 +626,7 @@ torch sparse中没有reshape方法
 
 
 
-<iframe src="https://wandb.ai/kuro7766/openproblem/reports/Multiome-MLP-v-s-CNN--VmlldzoyNjExNTY2"  class="left-80 -top-30 absolute transform origin-left scale-75" style="border:none;height:1024px;width:100%;"></iframe>
+<iframe src="https://wandb.ai/kuro7766/openproblem/reports/Multiome-MLP-v-s-CNN--VmlldzoyNjExNTY2"  class="left-80 -top-30 absolute transform origin-left scale-75 -z-50" style="border:none;height:1024px;width:100%;"></iframe>
 
 ---
 
@@ -652,12 +648,8 @@ torch sparse中没有reshape方法
 ---
 
 
-<div class="text-center m-50 py-3 rounded-8xl" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
-<!-- <div class="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ..."> -->
-
 ## 公开的NoteBook
 
-</div>
 
 ---
 
@@ -681,8 +673,7 @@ torch sparse中没有reshape方法
 
 <br/>
 
-- The model is a sequential dense network with **four hidden layers**.
-- Use pearson loss directly
+
 - Hyperparameter tuning with **KerasTuner**: We tune the hyperparameters with KerasTuner BayesianOptimization.
 - Cross-validation: Submitting unvalidated models and **relying only on the public leaderboard is bad practice**. The model in this notebook is fully cross-validated with a **3-fold GroupKFold**.
 
@@ -691,6 +682,9 @@ torch sparse中没有reshape方法
 
 
 ---
+
+- Use pearson loss directly
+- The model is a sequential dense network with **four hidden layers**.
 
 <div class="w-120">
 
@@ -723,7 +717,42 @@ Finally ,we get **256 SVD features + 144 important features**
 
 </div>
 
-<arrow x1="250" y1="270" x2="250" y2="330" color="#564" width="1" arrowSize="1" ></arrow>
+<arrow x1="250" y1="350" x2="250" y2="390" color="#564" width="1" arrowSize="1" ></arrow>
+
+---
+
+- 回归任务上的问题：Dropout
+
+
+<div class="w-200 top-60 absolute rounded-3xl bg-orange-50">
+
+| dropout | without dropout |
+|:--:|:--:|
+|![](https://miro.medium.com/max/720/1*TeiHpHeUhjsVfgFGnRPevw.png) | ![](https://miro.medium.com/max/720/1*gm7gGDsNPKUJcRnlkr_4sQ.png)|
+
+</div>
+
+<div class="w-100">
+
+![](https://miro.medium.com/max/828/1*fQNWUx9tfQBM5hugIgkHyw.png)
+
+</div>
+
+<div class="w-100 absolute right-20 top-8">
+
+[一些观点](https://towardsdatascience.com/pitfalls-with-dropout-and-batchnorm-in-regression-problems-39e02ce08e4d)
+
+<div class="mx-0 text-xs">
+
+
+- 在训练期间使用dropout时，将对其输出进行放缩，以在dropout层之后保留其平均值。但是，**variance尚未保留**。因此，它仅仅获取了trainset的统计信息，因此在dropout时在valset时预测失效。
+
+- dropout仅仅适用于只有输出的**相对大小很重要**的任务，例如猫狗分类logits；输出Regression中代表绝对数值时，会推理时性能差。
+
+</div>
+
+
+</div>
 
 
 ---
@@ -917,41 +946,6 @@ sparse tensor只能为二维，[batch,feature]，仅适用于mlp。想使用其�
 
 <div class="bg-slate-200">
 
-### Summary
-
-</div>
-
-
-- 特征
-
-- 降维
-
-input pca降维，output pca降维
-
-- 模型
-
-Catboost、LGBM、Tabnet、Ridge、MLP、Encoder Decoder NN ; Tricks
-
-- cv
-
-Group kfold on donor
-
-- 调参
-
-keras tuner , optuna
-
----
-
-<div class="text-center m-50 py-3 rounded-8xl" style="color: #ffffff;text-shadow: 0 0 10px #000000;background: #aaaaaa;">
-
-## 公开的EDA
-
-</div>
-
----
-
-<div class="bg-slate-200">
-
 ### 预处理 normalize Y to 1e6 (Multiome)
 
 </div>
@@ -974,6 +968,51 @@ keras tuner , optuna
 2) calculate normalizer Z = sum(exp(Y)) 
 
 3) renorm: Y_i -> Y_i + (log((1e6+22050 )/Z))
+
+---
+
+<div class="bg-slate-200">
+
+### Count nonzero genes - decrease daily
+
+</div>
+
+<div class="w-46 my-10 text-base">
+
+随着天数的增加，非0基因表达的数量减少
+  
+  猜测是细胞增殖速度减慢
+
+</div>
+
+
+<div class="absolute right-10 top-20 w-90 inline">
+
+![](http://kuroweb.tk/picture/16637242571340066.jpg)
+
+
+
+</div>
+
+<div class="absolute left-60 top-20 w-90 inline">
+  
+  ![](http://kuroweb.tk/picture/16637262286949838.jpg)
+
+</div>
+  
+
+<div class="absolute w-120 right-10 bottom-5">
+
+![](http://kuroweb.tk/picture/16637240469991712.jpg)
+
+</div>
+
+<div class="w-80 bottom-10 absolute">
+
+
+基因表达的sum和与基因表达的非0基因个数的相关系数**0.996**
+  
+  </div>
 
 
 ---
@@ -998,14 +1037,19 @@ X = X[:,~all_zero_columns]
 
 <br/>
 
-- Column Selection
 
-选择一些重要的列
+- ICA
+
+独立的组件分析（ICA）发现哪些向量是数据的独立子元素。换句话说，PCA有助于压缩数据，ICA有助于分离数据。
+
+
+Example code:
 
 ```
-X[:,columns_to_use:]
+from sklearn.decomposition import FastICA
+ica = FastICA(n_components=n)
+X = ica.fit_transform(X)
 ```
-
 
 ---
 
@@ -1025,23 +1069,15 @@ X = pca.fit_transform(X)
 
 ![](http://kuroweb.tk/picture/16632279768080712.jpg)
 
+
 </div>
 
 <br/>
 <br/>
 
-- ICA
-
-独立的组件分析（ICA）发现哪些向量是数据的独立子元素。换句话说，PCA有助于压缩数据，ICA有助于分离数据。
+但是PCA会破坏稀疏性，不支持稀疏向量 
 
 
-Example code:
-
-```
-from sklearn.decomposition import FastICA
-ica = FastICA(n_components=n)
-X = ica.fit_transform(X)
-```
 
 
 ---
@@ -1120,7 +1156,7 @@ X = model.fit_transform(X)
 <div class="bg-slate-200">
 
 
-### MSCI Correlations EDA Multiome
+### Pearson Correlations EDA
 
 </div>
 
@@ -1163,9 +1199,174 @@ These approximate ratios of  30% / 10% of negative/positive correlations appear 
 </div>
           </td>
           <td class="h-100">
-                    <div class="mx-2 rounded-3xl bg-blue-100 px-10 py-20">
-Possibly there are two subgroups of highly correlated targets representing about 30% and 10% of all targets and that have a very similar response to the same inputs.
+                    <div class="mx-2 rounded-3xl bg-blue-100 px-10 py-12">
+
+Possibly there are **two subgroups** of highly correlated targets representing about 30% and 10% of all targets and that have a very similar response to the same inputs.
+
 </div>
     </td>
   </tr>
 </table>
+
+
+---
+
+<div class="bg-slate-200">
+
+### 关联规则
+
+</div>
+
+<div class="absolute bottom-5 w-155">
+
+![](http://kuroweb.tk/picture/16636408644010334.jpg)
+
+</div>
+
+<div class=" w-100 rounded-3xl bg-orange-100 px-3 py-1 my-2">
+
+
+对于 inputs -> inputs / targets -> targets
+
+则内部存在耦合
+
+
+</div>
+
+<div class=" w-100 rounded-3xl bg-purple-100 px-3 py-1 my-2">
+
+  
+inputs -> targets / targets -> inputs
+
+可提取为特征
+  
+  </div>
+
+<div class=" w-100 absolute right-10 top-15">
+
+**Steps** :
+1. `df=(df-df.mean())/df.std()`
+2. `(df>13)` 每列选择十几个，减少时间复杂度
+3. `apriori(data, min_support=sup_thresh,  min_confidence=conf_thresh)`
+
+
+<br/>
+
+> 其中sup_thresh,conf_thresh = 0.0005,0.5  
+
+
+</div>
+
+
+---
+
+<div class="bg-slate-200">
+
+### Summary
+
+</div>
+
+
+- 特征
+
+- 降维
+
+input pca降维，output pca降维
+
+- 模型
+
+Catboost、LGBM、Tabnet、Ridge、MLP、Encoder Decoder NN、**SVR** ; Tricks
+
+- cv
+
+Group kfold on donor
+
+- 调参
+
+keras tuner , optuna
+
+
+---
+
+
+## 集成Tricks
+
+
+
+
+---
+
+<div class="bg-slate-200">
+
+### 60种特征工程
+
+</div>
+
+
+<iframe src="http://kuroweb.tk/picture/16636433051453058.jpg" width="100%" height="100%"></iframe>
+
+
+<!-- ![](http://kuroweb.tk/picture/16636433051453058.jpg) -->
+
+---
+
+<div class="bg-slate-200">
+
+### LR
+
+</div>
+
+<div class="absolute top-30 w-90">
+
+![](http://kuroweb.tk/picture/16636401139731652.jpg)
+
+</div>
+
+- 当training loss大于一个阈值时，进行正常的梯度下降；当training loss低于阈值时，会反过来进行梯度上升，让training loss保持在一个阈值附近，让模型持续进行“random walk”
+
+<div class="absolute right-10 top-59 w-120">
+
+  
+![](https://pic1.zhimg.com/80/v2-b7e04342186453f21a6af8d7227fb83f_720w.jpg?source=1940ef5c)
+
+  </div>
+  
+  <div class="absolute right-10 bottom-10 w-120">
+
+- 每隔一段时间重启学习率，这样在单位时间内能收敛到多个局部最小值，可以得到很多个模型做集成。
+
+</div>
+
+---
+
+<div class="bg-slate-200">
+
+### 其他
+
+</div>
+
+- 几十、几百个模型的集成
+
+- 调种子
+
+- HyperParam Tunner
+
+- torch & tf & jax
+
+---
+
+## Feature Importance 
+
+---
+
+### 基于MLP的特征重要性
+
+---
+
+### 基于相关系数的特征重要性
+
+---
+
+### 基于关联规则的特征重要性
+
+---
