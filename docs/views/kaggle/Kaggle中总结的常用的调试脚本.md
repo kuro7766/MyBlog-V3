@@ -203,7 +203,7 @@ def write_obj(path, obj3):
     with open(path, 'wb')as f:
         f.write(obj3)
 
-def read_obj(path,default):
+def read_obj(path,default=''):
     if not os.path.exists(path):
         return default
     f = open(path, "rb")
@@ -353,14 +353,64 @@ def set_seed(seed = 42):
 ## 调参用
 
 ```
-def param_picker(dict_of_list):
-    params = {}
-    import random
-    for key in dict_of_list.keys():
-        lst = dict_of_list[key]
-        elem = random.choice(lst)
-        params[key] = elem
-    return params
+def param_picker(dict_of_list,constrant = lambda c: True):
+    retry = 0
+    while True:
+        params = {}
+        import random
+        for key in dict_of_list.keys():
+            lst = dict_of_list[key]
+            elem = random.choice(lst)
+            params[key] = elem
+        if constrant(params):
+            return params
+        retry += 1
+        
+        assert retry < 1000,f'param_picker retry too many times with failure'
 {**param_picker({'a':[1,2,3],'b':[4,5,6]}),**{'ext_dict':10}}
+```
+
+## Kaggle初始化&文件上传
+
+
+
+```
+!pip install kaggle
+!mkdir .kaggle
+!mkdir ~/.kaggle/
+import json
+token = {"username":"galegale05","key":"keykey"}
+with open('kaggle.json', 'w') as file:
+    json.dump(token, file)
+!cp kaggle.json ~/.kaggle/kaggle.json
+!chmod 600 /root/.kaggle/kaggle.json
+!kaggle config set -n path -v ./autodl-tmp
+!kaggle datasets list
+```
+
+
+
+```
+upd = 'path-to-dir'
+!kaggle datasets init -p {upd}
+with open(f'{upd}/dataset-metadata.json','w') as f:
+  f.write('''
+  {
+    "title": "%s",
+    "id": "galegale05/%s",
+    "licenses": [
+      {
+        "name": "CC0-1.0"
+      }
+    ]
+  }
+  ''' % (upd,upd))
+
+!cat {upd}/dataset-metadata.json
+!kaggle datasets create -p {upd} --dir-mode zip
+```
+
+```
+
 ```
 
