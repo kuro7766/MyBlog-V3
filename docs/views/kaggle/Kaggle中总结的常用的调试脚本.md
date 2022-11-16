@@ -171,7 +171,8 @@ class MyMagics(Magics):
             print('>>> loop',i+1,'of',args[0])
             self.shell.run_cell(cell, store_history=False)
 
-get_ipython().register_magics(MyMagics)
+if locals().get('get_ipython',None):
+    get_ipython().register_magics(MyMagics)
 
 class classproperty(property):
     def __get__(self, cls, owner):

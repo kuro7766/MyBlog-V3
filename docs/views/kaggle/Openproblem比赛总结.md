@@ -31,6 +31,16 @@ print space_eval(tuner_space, best)
 
 加上字符串前缀过滤的时候也会比较容易找到
 
+
+
+### hyperopt
+
+更自定义化的训练过程 https://github.com/hyperopt/hyperopt/issues/694
+
+
+
+
+
 ## 数据集创建
 
 ```python
