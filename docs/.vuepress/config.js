@@ -121,7 +121,8 @@ module.exports = {
               "Kaggle中总结的常用的调试脚本",
               "Kaggle-OpenProblem",
               "patent_phrase",
-              "feedback比赛记录"
+              "feedback比赛记录",
+              'Openproblem比赛总结'
               // "csdn脚本",
               // "csdn脚本2",
               // "Kaggle中总结的常用的调试脚本"
