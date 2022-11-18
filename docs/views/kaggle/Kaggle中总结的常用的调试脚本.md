@@ -71,7 +71,7 @@ from contextlib import contextmanager
 import time
 
 # os.environ["WANDB_DISABLED"] = "true"
-class g:
+class g: 
 #     d=False
     d=True
     
@@ -101,7 +101,7 @@ class g:
     seed = 42
 import uuid
 
-class EnvHelper:
+class EnvHelper: # may be super effective when multiple program write to same file
     def new_name(self):
         return uuid.uuid4().__str__().replace('-','_')
     def __init__(self):
