@@ -157,22 +157,23 @@ adb = NamePrinter('adb').adb
 sdb = NamePrinter('sdb',argprint_lambda=lambda x : x.shape).adb
 tdb = NamePrinter('tdb',argprint_lambda=lambda x : (time.sleep(1),x)[1]).adb
 
-
-from IPython.core.magic import Magics, magics_class, line_magic,cell_magic
-
-@magics_class
-class MyMagics(Magics):
-
-    @cell_magic
-    def loop(self, line, cell):
-        # get cmagic args
-        args = line.split(' ')
-        for i in range(int(args[0])):
-            print('>>> loop',i+1,'of',args[0])
-            self.shell.run_cell(cell, store_history=False)
-
 if locals().get('get_ipython',None):
+
+    from IPython.core.magic import Magics, magics_class, line_magic,cell_magic
+
+    @magics_class
+    class MyMagics(Magics):
+
+        @cell_magic
+        def loop(self, line, cell):
+            # get cmagic args
+            args = line.split(' ')
+            for i in range(int(args[0])):
+                print('>>> loop',i+1,'of',args[0])
+                self.shell.run_cell(cell, store_history=False)
+                
     get_ipython().register_magics(MyMagics)
+
 
 class classproperty(property):
     def __get__(self, cls, owner):
