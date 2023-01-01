@@ -66,7 +66,7 @@ tags:
 
 我在榜单上找到了一个高分的笔记本。使用前端界面把打分[可视化](https://kuro7766.github.io/FeedbackEda/build/web/)后，可以发现两个重要的事实。
 
-
+![](http://kuroweb.tk/picture/16725838813280564.png)
 
 - 1.全文的分数几乎都一样
 - 2.个别分数与全文分数不同的部分，置信度全都比较低。
@@ -272,7 +272,7 @@ you your they we i think but also these some many people because there are
 
 ![](http://kuroweb.tk/picture/16591082895515714.jpg)
 
-#### 部分作用的cnn技术上的实现
+- 部分作用的cnn技术上的实现
 
 为了验证上述的想法，自然是需要做实验，一个个尝试。
 
@@ -292,7 +292,7 @@ you your they we i think but also these some many people because there are
 
 
 
-#### 把作文尾句放在前面
+- 把作文尾句放在前面
 
 大家都知道写作的时候，作文的尾句是比较重要的东西，一般都是总结文章重新重申主题，并且语言通常是比较干净的。
 
@@ -302,7 +302,7 @@ cv在0.76
 
 
 
-#### 浅层隐藏层权重
+- 浅层隐藏层权重
 
 语言模型的浅层保存的是通用的特征，深层是更加抽象的特征，但是如果数据的量不够，深层的模型反而对训练会造成阻碍。
 
@@ -324,7 +324,7 @@ cv在0.76
 
 实验证明，这样效果不错，是比较通用且稳定的上分办法。
 
-#### Attention Pooling
+- Attention Pooling
 
 ```python
 class AttentionHead(nn.Module):
@@ -350,13 +350,13 @@ class AttentionHead(nn.Module):
 
 attention pooling 可以作为一种选择，和cnn、lstm、meanpooling类似。
 
-#### 冻结+多层lstm pooling
+- 冻结+多层lstm pooling
 
 ❌效果很差
 
 
 
-#### Shuffle vs Order
+- Shuffle vs Order
 
 经过[EDA](https://kuro7766.github.io/FeedbackEda/build/web/)观察，我发现同一篇文章中，那些得分和本文大部分评分不一样的地方，比如说全文都是effective，只有一个句子是ineffective，那么这个句子打分的置信度会非常低。经过观察这是非常普遍的现象。可以尝试一下用一个单独的分类器来分类是否为置信度低的样本，然后把logits送给fcl。
 
