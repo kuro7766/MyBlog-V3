@@ -3,10 +3,10 @@ title: Word使用技巧
 date: 2022-08-03
 sidebar: "auto"
 categories:
-- kaggle
+- 软件
   
 tags:
-- kaggle
+- 办公软件
 
 ---
 
