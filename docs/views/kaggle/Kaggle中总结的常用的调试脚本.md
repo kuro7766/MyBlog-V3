@@ -75,25 +75,32 @@ class g:
     
     # d1 = False
     d1 = True # explanation -> 
+    ''' '''
 
     # d2 = False
     d2 = True # explanation -> 
+    ''' '''
 
     # d3 = False
     d3 = True # explanation -> 
+    ''' '''
 
     # d4 = False
     d4 = True # explanation -> 
+    ''' '''
 
     # d5 = False
     d5 = True # explanation -> 
+    ''' '''
     
     # d6 = False
     d6 = True # explanation -> 
-    
+    ''' '''
+
     # d7 = False
     d7 = True # explanation -> 
-    
+    ''' '''
+
     # d,d1,d2,d3,d4,d5,d6,d7,d8 = False,False,False,False,False,False,False,False,False
     
     seed = 42
