@@ -294,7 +294,7 @@ module.exports = {
           componentsDir: path.resolve(__dirname, './components'),
         },
       ],
-      ['@fortawesome/vue-fontawesome', {      component: 'fa',      libraryName: 'fontawesome'    }]
+      // ['@fortawesome/vue-fontawesome', {      component: 'fa',      libraryName: 'fontawesome'    }]
     ],
 
     
