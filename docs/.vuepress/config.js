@@ -45,6 +45,7 @@ module.exports = {
           { icon: "reco-github", link: "https://github.com/Tsanfer" },
           // { icon: "reco-bilibili", link: "https://space.bilibili.com/12167681" },
           { icon: "reco-qq", link: "tencent://message/?uin=2280315050" },
+          { icon: 'fa-kaggle',link: 'https://www.kaggle.com/galegale05'}
           // { icon: "reco-twitter", link: "https://twitter.com/a1124851454" },
           // { icon: "reco-mail", link: "mailto:a1124851454@gmail.com" },
         ],
@@ -56,11 +57,11 @@ module.exports = {
           text: "工具",
           icon: "reco-api",
           items: [
-            {
-              text: "网盘",
-              link: "http://clouddisk.tsanfer.com:8080",
-              icon: "fa-hdd",
-            },
+            // {
+            //   text: "网盘",
+            //   link: "http://clouddisk.tsanfer.com:8080",
+            //   icon: "fa-hdd",
+            // },
             // {
             //   text: "订阅转换器",
             //   link: "http://clouddisk.tsanfer.com:58080",
@@ -75,12 +76,18 @@ module.exports = {
         },
         {
           text: "联系",
-          icon: "reco-message",
+          icon: "reco-mail",
           items: [
             {
               text: "GitHub",
               link: "https://github.com/kuro7766",
               icon: "reco-github",
+            },
+            
+            {
+              text: "Kaggle",
+              link: "https://www.kaggle.com/galegale05",
+              icon: "reco-account",
             },
             // {
             //   text: "CSDN",
@@ -265,7 +272,7 @@ module.exports = {
       [
         "@vuepress-reco/vuepress-plugin-rss", //RSS插件
         {
-          site_url: "https://tsanfer.com", //网站地址
+          site_url: "https://kuro7766.github.io/MyBlog-V3/", //网站地址
           copyright: "Kuro", //版权署名
         },
       ],
