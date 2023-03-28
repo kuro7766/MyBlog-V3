@@ -55,6 +55,9 @@ jobs:
           pip install jupyter
           pip install --upgrade Pygments
 
+      - run: |
+          npm install --save-dev @fortawesome/fontawesome-svg-core
+          npm install --save-dev @fortawesome/free-solid-svg-icons
 
       # 2023.3.28 mermaid问题，能通过编译，但是会导致网页无法打开
       # - run: |
