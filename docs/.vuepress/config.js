@@ -42,7 +42,7 @@ module.exports = {
           text: "标签", // 默认 “标签”
         },
         socialLinks: [
-          { icon: "reco-github", link: "https://github.com/Tsanfer" },
+          { icon: "reco-github", link: "https://github.com/kuro7766" },
           // { icon: "reco-bilibili", link: "https://space.bilibili.com/12167681" },
           { icon: "reco-qq", link: "tencent://message/?uin=2280315050" },
           { icon: 'fa-kaggle',link: 'https://www.kaggle.com/galegale05'}
