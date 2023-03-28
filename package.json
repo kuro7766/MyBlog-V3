@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "docs:dev": "vuepress dev docs2",
-    "docs:build": "vuepress build docs2"
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "dependencies": {
     "@vuepress-reco/vuepress-plugin-rss": "^1.0.2",

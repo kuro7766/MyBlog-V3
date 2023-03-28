@@ -268,11 +268,11 @@ module.exports = {
           copyright: "Kuro", //版权署名
         },
       ],
-      ['vuepress-plugin-mermaidjs'],
+      //['vuepress-plugin-mermaidjs'],
       [
         "@renovamen/vuepress-plugin-mermaid"
       ],
-      ['mermaidjs'],
+      //['mermaidjs'],
       ['flexsearch-pro'],
       ["@vuepress/nprogress"], // 加载进度条
       ["reading-progress"], // 阅读进度条

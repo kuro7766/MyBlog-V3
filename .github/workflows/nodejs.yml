@@ -76,7 +76,7 @@ jobs:
         uses: actions/upload-artifact@v3 #共享或保存action过程中产生的文件
         with:
           name: static_web_file
-          path: ./docs2/.vuepress/dist/ # or path/to/artifact
+          path: ./docs/.vuepress/dist/ # or path/to/artifact
           
           
       - name: config for github bot
@@ -86,8 +86,8 @@ jobs:
           sudo git config --system core.longpaths true
 
       - run: mkdir -p web
-      - run: cp -r ./docs2/.vuepress/dist/* ./web/
-#       - run: git add -f ./docs2/.vuepress/dist/
+      - run: cp -r ./docs/.vuepress/dist/* ./web/
+#       - run: git add -f ./docs/.vuepress/dist/
       - run: git add -f ./web
       - run: git commit -m "auto changes"
 #       - run: git fetch
@@ -103,5 +103,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: gh-pages # The branch the action should deploy to.
-          folder: ./docs2/.vuepress/dist/ # The folder the action should deploy.
+          folder: ./docs/.vuepress/dist/ # The folder the action should deploy.
 
