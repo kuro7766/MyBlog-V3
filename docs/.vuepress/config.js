@@ -26,7 +26,7 @@ module.exports = {
   extendMarkdown: md => {
       md.set({ breaks: true })
       md.use(require('markdown-it-katex'))
-      md.use(require("markdown-it-mermaid").default)
+      // md.use(require("markdown-it-mermaid").default)
   },
     theme: "reco", //选择主题‘reco’
     themeConfig: {
