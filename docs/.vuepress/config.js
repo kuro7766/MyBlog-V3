@@ -50,7 +50,7 @@ module.exports = {
           // { icon: "fa-hdd",link: "https://www.kaggle.com/galegale05"}
           // { icon: "fab-kaggle",link: 'https://www.kaggle.com/galegale05'}
           // { icon: "reco-twitter", link: "https://twitter.com/a1124851454" },
-          // { icon: "reco-mail", link: "mailto:a1124851454@gmail.com" },
+          { icon: "reco-mail", link: "mailto:2280315050@qq.com" },
         ],
       },
       nav: [
