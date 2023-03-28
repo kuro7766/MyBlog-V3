@@ -54,8 +54,14 @@ jobs:
           pip install pyngrok
           pip install jupyter
           pip install --upgrade Pygments
+
+
+      # 2023.3.28 问题解决了
       - run: |
-          sh run.sh remote.ipynb remote.py
+          yarn add -D vuepress-plugin-mermaidjs
+
+      # - run: |
+          # sh run.sh remote.ipynb remote.py
 
         # 这里开始报错
 
