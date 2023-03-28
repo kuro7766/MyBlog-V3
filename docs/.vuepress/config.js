@@ -44,8 +44,9 @@ module.exports = {
         socialLinks: [
           { icon: "reco-github", link: "https://github.com/kuro7766" },
           // { icon: "reco-bilibili", link: "https://space.bilibili.com/12167681" },
-          { icon: "reco-qq", link: "tencent://message/?uin=2280315050" },
-          { icon: "fa-brands fa-kaggle",link: 'https://www.kaggle.com/galegale05'}
+          // { icon: "reco-qq", link: "tencent://message/?uin=2280315050" },
+          // { icon: "fa-brands fa-kaggle",link: 'https://www.kaggle.com/galegale05'}
+          { icon: "fa-kaggle",link: 'https://www.kaggle.com/galegale05'}
           // { icon: "reco-twitter", link: "https://twitter.com/a1124851454" },
           // { icon: "reco-mail", link: "mailto:a1124851454@gmail.com" },
         ],
