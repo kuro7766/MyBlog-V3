@@ -57,11 +57,11 @@ module.exports = {
           text: "工具",
           icon: "reco-api",
           items: [
-            // {
-            //   text: "网盘",
-            //   link: "http://clouddisk.tsanfer.com:8080",
-            //   icon: "fa-hdd",
-            // },
+            {
+              text: "网盘",
+              link: "http://clouddisk.tsanfer.com:8080",
+              icon: "fa-hdd",
+            },
             // {
             //   text: "订阅转换器",
             //   link: "http://clouddisk.tsanfer.com:58080",
@@ -76,7 +76,7 @@ module.exports = {
         },
         {
           text: "联系",
-          icon: "reco-mail",
+          icon: "reco-message",
           items: [
             {
               text: "GitHub",
@@ -84,11 +84,11 @@ module.exports = {
               icon: "reco-github",
             },
             
-            {
-              text: "Kaggle",
-              link: "https://www.kaggle.com/galegale05",
-              icon: "reco-account",
-            },
+            // {
+            //   text: "Kaggle",
+            //   link: "https://www.kaggle.com/galegale05",
+            //   icon: "reco-account",
+            // },
             // {
             //   text: "CSDN",
             //   link: "https://blog.csdn.net/qq_27961843/",
