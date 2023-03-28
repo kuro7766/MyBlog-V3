@@ -1,5 +1,5 @@
 ---
-title: 设置嵌入式Linux开发板的NFS服务，开机自动挂载NFS服务
+title: 测试文件
 date: 2020-03-03
 sidebar: "auto"
 categories:
