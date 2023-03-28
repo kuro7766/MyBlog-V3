@@ -56,9 +56,9 @@ jobs:
           pip install --upgrade Pygments
 
 
-      # 2023.3.28 问题解决了
-      - run: |
-          yarn add -D vuepress-plugin-mermaidjs
+      # 2023.3.28 mermaid问题，能通过编译，但是会导致网页无法打开
+      # - run: |
+      #     yarn add -D vuepress-plugin-mermaidjs
 
       # - run: |
           # sh run.sh remote.ipynb remote.py

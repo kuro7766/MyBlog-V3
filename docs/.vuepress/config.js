@@ -270,9 +270,9 @@ module.exports = {
         },
       ],
       //['vuepress-plugin-mermaidjs'],
-      [
-        "@renovamen/vuepress-plugin-mermaid"
-      ],
+      //[
+      //  "@renovamen/vuepress-plugin-mermaid"
+      //],
       //['mermaidjs'],
       ['flexsearch-pro'],
       ["@vuepress/nprogress"], // 加载进度条

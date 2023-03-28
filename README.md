@@ -12,7 +12,7 @@
 
 ![](http://kuroweb.tk/picture/16799992972261682.png)
 
-
+其中第一个mermaid 插件 vuepress-plugin-mermaidjs没用，就算编译通了，也会导致无法打开整个博客网页。
 
 ## 致谢
 
