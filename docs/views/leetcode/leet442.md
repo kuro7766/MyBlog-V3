@@ -1,5 +1,5 @@
 ---
-title: 每日一题leetcode 442感想
+title: leetcode 442
 date: 2022-05-08
 sidebar: "auto"
 categories:
@@ -8,8 +8,6 @@ categories:
 tags:
 - leetcode
 ---
-
-碉堡了的内存利用技巧！
 
 
 
