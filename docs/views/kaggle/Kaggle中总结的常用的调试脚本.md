@@ -70,8 +70,8 @@ import time
 
 # os.environ["WANDB_DISABLED"] = "true"
 class g: 
-#     d=False
-    d=True
+    debug=False
+    # debug=True
     
     # d1 = False
     d1 = True # explanation -> 
@@ -101,12 +101,13 @@ class g:
     d7 = True # explanation -> 
     ''' '''
 
-    # d,d1,d2,d3,d4,d5,d6,d7,d8 = False,False,False,False,False,False,False,False,False
+    if not debug:
+        d1,d2,d3,d4,d5,d6,d7 = False,False,False,False,False,False,False,False
     
     seed = 42
 import uuid
 
-class EnvHelper: # may be super effective when multiple program write to same file
+class EnvHelper:
     def new_name(self):
         return uuid.uuid4().__str__().replace('-','_')
     def __init__(self):
@@ -146,7 +147,7 @@ class NamePrinter:
     self.funcname = funcname
     self.print_fun = print_fun
     self.argprint_lambda = argprint_lambda
-  def adb(self,p):
+  def adb(self,p=''):
 #      return 
       funcname= self.funcname
       argument_real_name = None
@@ -225,6 +226,7 @@ def read_obj(path,default=''):
 def iv(func,*args,**kwargs):
 #     print(f'{func.__name__}')
     return func(*args,**kwargs)
+
 ```
 
 ## 需要pip安装的工具
