@@ -244,11 +244,16 @@ ARGUMENTS = parse_args(default_args=\
                        {'log_file':'./log-n.txt',})
 
 
-def log_to(log_file,logstr,disable_print=False):      
+import threading
+
+def log_to_thread(log_file,logstr,disable_print=False):
     if not disable_print:
         print(logstr)
     with open(log_file,'a') as f:
         f.write(logstr+'\n')
+
+def log_to(log_file,logstr,disable_print=False):      
+    threading.Thread(target=log_to_thread,args=(log_file,logstr,disable_print)).start()
 
 
 ```
