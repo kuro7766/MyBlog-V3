@@ -244,7 +244,7 @@ ARGUMENTS = parse_args(default_args=\
                        {'log_file':'./log-n.txt',})
 
 
-def log_file(log_file,logstr,disable_print=False):      
+def log_to(log_file,logstr,disable_print=False):      
     if not disable_print:
         print(logstr)
     with open(log_file,'a') as f:
