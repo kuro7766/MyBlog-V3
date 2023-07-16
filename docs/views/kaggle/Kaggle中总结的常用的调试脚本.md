@@ -102,7 +102,7 @@ class g:
     ''' '''
 
     if not debug:
-        d1,d2,d3,d4,d5,d6,d7 = False,False,False,False,False,False,False,False
+        d1,d2,d3,d4,d5,d6,d7 = False,False,False,False,False,False,False
     
     seed = 42
 import uuid
@@ -226,6 +226,30 @@ def read_obj(path,default=''):
 def iv(func,*args,**kwargs):
 #     print(f'{func.__name__}')
     return func(*args,**kwargs)
+
+def parse_args(kv_spliter = ':',default_args = {}):
+    import sys 
+    argv = sys.argv
+    rt = {**default_args}
+    for i in range(len(argv)):
+        if kv_spliter not in argv[i]:
+            continue
+        else:
+            k,v = argv[i].split(kv_spliter)
+            rt[k] = v
+    print('args received',rt)
+    return rt
+
+ARGUMENTS = parse_args(default_args=\
+                       {'log_file':'./log-n.txt',})
+
+
+def log_file(log_file,logstr,disable_print=False):      
+    if not disable_print:
+        print(logstr)
+    with open(log_file,'a') as f:
+        f.write(logstr+'\n')
+
 
 ```
 
