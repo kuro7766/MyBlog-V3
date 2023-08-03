@@ -101,10 +101,67 @@ class g:
     d7 = True # explanation -> 
     ''' '''
 
-    if not debug:
-        d1,d2,d3,d4,d5,d6,d7 = False,False,False,False,False,False,False
+    # d8 = False
+    d8 = True # explanation -> 
+    ''' '''
+
+    # d9 = False
+    d9 = True # explanation -> 
+    ''' '''
+
+    # d10 = False
+    d10 = True # explanation -> 
+    ''' '''
+
+    # d11 = False
+    d11 = True # explanation -> 
+    ''' '''
+
+    # d12 = False
+    d12 = True # explanation -> 
+    ''' '''
     
+    # d13 = False
+    d13 = True # explanation -> 
+    ''' '''
+
+    # d14 = False
+    d14 = True # explanation -> 
+    ''' '''
+
+    # d15 = False
+    d15 = True # explanation -> 
+    ''' '''
+
+    # d16 = False
+    d16 = True # explanation -> 
+    ''' '''
+
+    # d17 = False
+    d17 = True # explanation -> 
+    ''' '''
+
+    # d18 = False
+    d18 = True # explanation -> 
+    ''' '''
+
+    # d19 = False
+    d19 = True # explanation -> 
+    ''' '''
+    
+    # d20 = False
+    d20 = True # explanation -> 
+    ''' '''
+
+    # d21 = False
+    d21 = True # explanation -> 
+    ''' '''
+    
+    if not debug:
+        d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20,d21 = False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False    
+        
     seed = 42
+    
 import uuid
 
 class EnvHelper:
@@ -222,7 +279,20 @@ def read_obj(path,default=''):
         obj = default
     f.close()
     return obj
-    
+
+class HitTest:
+    def __init__(self,n,enable=True) -> None:
+        self.count = 0
+        self.n = n
+        self.enable = enable
+    def hit_test(self):
+        if not self.enable: return False
+        self.count += 1
+        if self.count % self.n == 0:
+            return True
+        else:
+            return False      
+        
 def iv(func,*args,**kwargs):
 #     print(f'{func.__name__}')
     return func(*args,**kwargs)
@@ -242,20 +312,6 @@ def parse_args(kv_spliter = ':',default_args = {}):
 
 ARGUMENTS = parse_args(default_args=\
                        {'log_file':'./log-n.txt',})
-
-import threading
-_tl = threading.Lock()
-def log_to_thread(log_file,logstr,disable_print=False):
-    # threading lock queue
-    with _tl:
-        if not disable_print:
-            print(logstr)
-        with open(log_file,'a') as f:
-            f.write(logstr+'\n')
-
-def log_to(log_file,logstr,disable_print=False):      
-    threading.Thread(target=log_to_thread,args=(log_file,logstr,disable_print)).start()
-
 
 ```
 
