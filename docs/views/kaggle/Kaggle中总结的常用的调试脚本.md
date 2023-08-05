@@ -310,8 +310,8 @@ def parse_args(kv_spliter = ':',default_args = {}):
     print('args received',rt)
     return rt
 
-ARGUMENTS = parse_args(default_args=\
-                       {'log_file':'./log-n.txt',})
+# ARGUMENTS = parse_args(default_args=\
+#                       {'log_file':'./log-n.txt',})
 
 ```
 
