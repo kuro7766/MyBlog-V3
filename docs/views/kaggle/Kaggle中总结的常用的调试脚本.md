@@ -66,16 +66,18 @@ from __future__ import print_function
 import inspect, re,os,pickle
 
 from contextlib import contextmanager
-import time
+import time,re
 
+os.environ["WANDB__SERVICE_WAIT"] = "300"
 # os.environ["WANDB_DISABLED"] = "true"
+
 class g: 
     debug=False
     # debug=True
     
     # d1 = False
     d1 = True # explanation -> 
-    ''' '''
+    ''' fast start '''
 
     # d2 = False
     d2 = True # explanation -> 
@@ -300,18 +302,24 @@ def iv(func,*args,**kwargs):
 def parse_args(kv_spliter = ':',default_args = {}):
     import sys 
     argv = sys.argv
-    rt = {**default_args}
+    version_matches = re.findall(r'[\-\d]+(?=\.py$)',argv[0])
+    version_code = version_matches[0] if version_matches else 0
+    rt = {**{'version_code':version_code},**default_args}
     for i in range(len(argv)):
         if kv_spliter not in argv[i]:
             continue
         else:
             k,v = argv[i].split(kv_spliter)
-            rt[k] = v
+            if k in default_args:
+                rt[k] = type(default_args[k])(v)
+            else:
+                rt[k] = v
     print('args received',rt)
     return rt
 
 # ARGUMENTS = parse_args(default_args=\
 #                       {'log_file':'./log-n.txt',})
+
 
 ```
 
