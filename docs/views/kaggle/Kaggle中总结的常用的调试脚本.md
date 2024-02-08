@@ -302,6 +302,7 @@ def iv(func,*args,**kwargs):
 def parse_args(kv_spliter = ':',default_args = {}):
     import sys 
     argv = sys.argv
+    print('argv:' + str(argv))    
     version_matches = re.findall(r'[\-\d]+(?=\.py$)',argv[0])
     version_code = version_matches[0] if version_matches else 0
     rt = {**{'version_code':version_code},**default_args}
