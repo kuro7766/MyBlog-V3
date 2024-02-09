@@ -318,8 +318,24 @@ def parse_args(kv_spliter = ':',default_args = {}):
     print('args received',rt)
     return rt
 
-# ARGUMENTS = parse_args(default_args=\
-#                       {'log_file':'./log-n.txt',})
+
+def build_default_args():
+    # write your args here
+	
+    # then paste this in your CFG
+    '''
+    ***no dependency variables***
+    
+    for __ in ARGUMENTS:
+        exec(f'{__} = ARGUMENTS["{__}"]')
+        print(__,'-->',ARGUMENTS[__])
+        
+    ***dependency variables***
+    '''    
+    print('sample cmd:',' '.join([f'{k}:{v}' for k,v in locals().items() ]))
+    return locals().copy()
+ARGUMENTS = parse_args(default_args=\
+                    build_default_args())
 
 
 ```
