@@ -312,6 +312,7 @@ def parse_args(kv_spliter = ':',default_args = {}):
         else:
             k,v = argv[i].split(kv_spliter)
             if k in default_args:
+                if v in ['True','False']: v = eval(v)                
                 rt[k] = type(default_args[k])(v)
             else:
                 rt[k] = v
