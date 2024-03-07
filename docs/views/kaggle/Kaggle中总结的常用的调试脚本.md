@@ -299,25 +299,38 @@ def iv(func,*args,**kwargs):
 #     print(f'{func.__name__}')
     return func(*args,**kwargs)
 
-def parse_args(kv_spliter = ':',default_args = {}):
+
+def parse_args(kv_spliter = ':',default_args = {},from_string=None,override_default=True,type_template=None):
     import sys 
-    argv = sys.argv
-    print('argv:' + str(argv))    
+    if from_string:
+        argv = from_string.split()
+    else:
+        argv = sys.argv
+    type_template = default_args if type_template is None else type_template
+    cmd = ' '.join(argv)
     version_matches = re.findall(r'[\-\d]+(?=\.py$)',argv[0])
     version_code = version_matches[0] if version_matches else 0
-    rt = {**{'version_code':version_code},**default_args}
+    rt = {**{'version_code':version_code,'cmd':cmd},**default_args}
     for i in range(len(argv)):
         if kv_spliter not in argv[i]:
             continue
         else:
             k,v = argv[i].split(kv_spliter)
-            if k in default_args:
-                if v in ['True','False']: v = eval(v)                
-                rt[k] = type(default_args[k])(v)
+            if k in {**type_template,**default_args}:
+                if k in default_args:
+                    if override_default:
+                        if v in ['True','False']: v = eval(v)
+                        rt[k] = type(default_args[k])(v)
+                    else:
+                        rt[k] = default_args[k]
+                elif k in type_template: # 仅仅在type_template中出现的参数
+                    if v in ['True','False']: v = eval(v)
+                    rt[k] = type(type_template[k])(v)
             else:
-                rt[k] = v
-    print('args received',rt)
+                rt[k] = v# 默认普通string类型
+    print('[args received]',rt)
     return rt
+
 
 
 def build_default_args():
